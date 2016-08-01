@@ -15,6 +15,9 @@ public class Zadatak_03 {
 	 * @return Greatest common divisor
 	 */
 	public static int greatestCommonDivisor(int numberOne, int numberTwo){
+		// make sure numbers are not negative
+		numberOne = Math.abs(numberOne);
+		numberTwo = Math.abs(numberTwo);
 		// default common divisor is 1
 		int maxCommonDivisor = 1;
 		// loop from 2 to whicever number from parameters is greatest
@@ -51,7 +54,8 @@ public class Zadatak_03 {
 		}
 		// try to print/clean if something is left inside console
 		try {
-			System.out.printf("Unnecesary input garbage:\n%s\n\n", userInput.nextLine());
+			String garbage = userInput.nextLine();
+			if (garbage.length() > 0) System.out.printf("\nUnnecesary input garbage:\n>>%s<<\n\n", garbage);
 		// no garbage in console, pass...
 		} catch (Exception e) {}
 		
