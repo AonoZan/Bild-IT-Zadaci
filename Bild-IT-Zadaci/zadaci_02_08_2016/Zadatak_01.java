@@ -9,8 +9,8 @@ public class Zadatak_01 {
 	 * @param list of elements
 	 * @param separators is string list that contains separators
 	 * to print between values and at the end(need to be two values, or leave as null for default)
-	 * @param alignment is uset to align numbers
-	 * @param newLine is value that says when to break in new line. 0 for only one line
+	 * @param alignment is used to align values with string format
+	 * @param newLine is value that says when to break in new line. 0 for only one value per line
 	 * @throws Exception If argument is in some case null then throw exception.
 	 */
 	public static void printList(int[] list, String[] separators, int alignment, int newLine) throws Exception{
@@ -39,8 +39,8 @@ public class Zadatak_01 {
 	 * @param list of elements
 	 * @param separators is string list that contains separators
 	 * to print between values and at the end(need to be two values, or leave as null for default)
-	 * @param alignment is uset to align numbers
-	 * @param newLine is value that says when to break in new line. 0 for only one line
+	 * @param alignment is used to align values with string format
+	 * @param newLine is value that says when to break in new line. 0 for only one value per line
 	 * @throws Exception If argument is in some case null then throw exception.
 	 */
 	public static void printList(ArrayList<Integer> list, String[] separators, int alignment, int newLine) throws Exception{

@@ -20,6 +20,7 @@ Zadaci_01_08_2016
 zadaci_02_08_2016
 	Zadatak_05
 		public static void printList(int[] list, String[] separators, int alignment, int newLine)
+		public static void printList(ArrayList<Integer> list, String[] separators, int alignment, int newLine)
 
 
 
