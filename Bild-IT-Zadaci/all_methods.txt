@@ -1,0 +1,28 @@
+All the methods for selebrating "code-reuse" movement \m/
+
+Zadaci_01_08_2016
+	Zadatak_01
+		public static Integer max(ArrayList<Integer>list)
+	Zadatak_02
+		public static int countVowels(String sentence)
+	Zadatak_03
+		public static int greatestCommonDivisor(int numberOne, int numberTwo)
+	Zadatak_04
+		public static int[] generateRandom(int from, int to, int amount)
+		public static int[] sort(int[] list)
+		public static void printList(int[] list)
+		public static void printOccurenceCount(int[] list)
+	Zadatak_05
+		public static int[] cleanList(int[] list, int regex)
+		public static int readFromConsole(int number)
+		public static int[] fillListFromConsoleInput(int[] list)
+		public static void printLargest(int[] list)
+zadaci_02_08_2016
+	Zadatak_05
+		public static void printList(int[] list, String[] separators, int alignment, int newLine)
+
+
+
+
+
+
