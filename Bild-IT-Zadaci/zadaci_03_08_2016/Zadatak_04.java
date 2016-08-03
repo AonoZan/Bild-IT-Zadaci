@@ -49,8 +49,8 @@ public class Zadatak_04 {
 	 */
 	public static double[][] fillListFromConsoleInput(double[][] list, boolean fixedLength) {
 		// chack if passed list has value
-		if (list == null || list.length < 1 || list[0].length < 1) {
-			System.out.println("Cant fill list that has no values or is null.(null is returned)");
+		if (list == null) {
+			System.out.println("Cant fill list that is null.(null is returned)");
 			return null;
 		}
 		// set default values

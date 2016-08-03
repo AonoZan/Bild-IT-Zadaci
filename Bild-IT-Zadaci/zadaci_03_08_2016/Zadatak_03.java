@@ -20,12 +20,6 @@ public class Zadatak_03 {
 		} else if (niz2 == null) {
 			System.out.println("Cant compare lists. Second argument is null.");
 			return false;
-		} else if (niz1.length < 1) {
-			System.out.println("Cant compare lists. First argument has no values.");
-			return false;
-		} else if (niz2.length < 1) {
-			System.out.println("Cant compare lists. Second argument has no values.");
-			return false;
 		}
 		// loop trough whichever list has less elements
 		for (int i = 0; i < Math.min(niz1.length, niz2.length); i++) {

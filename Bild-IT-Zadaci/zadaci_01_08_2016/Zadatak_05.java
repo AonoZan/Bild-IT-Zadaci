@@ -61,7 +61,7 @@ public class Zadatak_05 {
 	 */
 	public static int[] fillListFromConsoleInput(int[] list) {
 		// chack if passed list has value
-		if (list == null || list.length < 1) {
+		if (list == null) {
 			System.out.println("Cant fill list that has no values or is null.(null is returned)");
 			return null;
 		}

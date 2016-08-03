@@ -38,7 +38,7 @@ public class Zadatak_02 {
 	 */
 	public static double[] fillListFromConsoleInput(double[] list, boolean fixedLength) {
 		// chack if passed list has value
-		if (list == null || list.length < 1) {
+		if (list == null) {
 			System.out.println("Cant fill list that has no values or is null.(null is returned)");
 			return null;
 		}
@@ -87,7 +87,7 @@ public class Zadatak_02 {
 	 */
 	public static double min(double[] array) {
 		// check if list contains anything and return 0 if it doesn't
-		if (array == null || array.length < 1) {
+		if (array == null) {
 			System.out.println("List is empty or null.(0 is returned)");
 			return 0;
 		// if list contains only one item return it immediately
