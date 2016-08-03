@@ -77,6 +77,7 @@ public class Zadatak_03 {
 	/**
 	 * Main method that finds text file and passes it to the main class as a first argument.
 	 * @param args
+	 * @see <a href="http://stackoverflow.com/questions/4871051/getting-the-current-working-directory-in-java">Get current working directory</a>
 	 * @throws IOException
 	 */
 	public static void main(String[] args) throws IOException {
