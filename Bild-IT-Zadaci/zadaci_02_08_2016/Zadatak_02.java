@@ -18,8 +18,12 @@ public class Zadatak_02 {
 		if (from == to) return 0;
 		// or if first argument is bigger than second switch them
 		else if (from > to) {
-			from = Math.min(from, to);
-			to = Math.max(from, to);
+			// @mistake
+			/*from = Math.min(from, to);
+			to = Math.max(from, to);*/
+			to += from;
+			from = to - from;
+			to -= from;
 		}
 		// return random value in range
 		return from + (int)(Math.random() * (to - from + 1));
