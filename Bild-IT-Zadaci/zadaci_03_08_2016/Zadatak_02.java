@@ -63,9 +63,8 @@ public class Zadatak_02 {
 	/**
 	 * Method for printing list of elements. Useful for debug.
 	 * @param list of elements
-	 * @throws Exception If argument is in some case null then throw exception.
 	 */
-	public static void printList(double[] list) throws Exception{
+	public static void printList(double[] list){
 		// make sure list is not null
 		if (list != null) {
 			// print all elements except last one with comma separated
@@ -76,7 +75,7 @@ public class Zadatak_02 {
 			System.out.printf("%.2f.", list[list.length-1]);
 		// if it is throw exception with message
 		} else {
-			throw new Exception("List has no value. (null).");
+			System.out.println("Cant print list that has null value.");
 		}
 	}
 	/**
@@ -109,12 +108,7 @@ public class Zadatak_02 {
 		// create list and fill it with values that user provides
 		double[] userNumbers = fillListFromConsoleInput(new double[10]);
 //		// try to print list
-//		try {
-//			printList(userNumbers);
-//			System.out.println();
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
+//		printList(userNumbers);
 		// print lowest decimal in list
 		System.out.printf("Lowest value taken from console is %.2f.", min(userNumbers));
 		// close Scanner
