@@ -32,11 +32,11 @@ public class Zadatak_02 {
 	/**
 	 * Method to make easy entering lots of decimal values from console.
 	 * Pass list of any size and list will be updated with new values.
+	 * Method asks user for values unil it update every value in list.
 	 * @param list to be filled with values
-	 * @param fixedLength boolean value to tell if list is of fixed length or one that will be filled infinnitely
 	 * @return list that has user entered values
 	 */
-	public static double[] fillListFromConsoleInput(double[] list, boolean fixedLength) {
+	public static double[] fillListFromConsoleInput(double[] list) {
 		// chack if passed list has value
 		if (list == null) {
 			System.out.println("Cant fill list that has no values or is null.(null is returned)");
@@ -107,7 +107,7 @@ public class Zadatak_02 {
 	 */
 	public static void main(String[] args) {
 		// create list and fill it with values that user provides
-		double[] userNumbers = fillListFromConsoleInput(new double[10], true);
+		double[] userNumbers = fillListFromConsoleInput(new double[10]);
 //		// try to print list
 //		try {
 //			printList(userNumbers);
