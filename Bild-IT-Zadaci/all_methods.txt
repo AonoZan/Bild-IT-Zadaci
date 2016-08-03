@@ -34,6 +34,13 @@ zadaci_02_08_2016
 zadaci_03_08_2016
 	Zadatak_01
 		public static boolean isPrime(int number){
+	Zadatak_02
+		public static double readFromConsole(double number)
+		public static double[] fillListFromConsoleInput(double[] list, boolean fixedLength)
+		public static void printList(double[] list)
+		public static double min(double[] array)
+	Zadatak_03
+		public static boolean equals(int[] niz1, int[]niz2)
 
 
 
