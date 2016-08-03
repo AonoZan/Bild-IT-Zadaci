@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Zadatak_03 {
+class Main_Zadatak_03 {
 	/**
 	 * Method for printing status of file.
 	 * Method counts every text character word and lines that contains text.
@@ -54,9 +54,6 @@ public class Zadatak_03 {
 	 * @throws IOException is raised if reading of file is not possible
 	 */
 	public static void main(String[] args) throws IOException {
-		// tmp variable for debugging
-		args = new String[]{System.getProperty("user.dir") + "\\zadaci_02_08_2016\\test.txt"};
-		System.out.println(args[0]);
 		// if no argument is specified exit
 		if (args == null || args.length == 0) {
 			System.out.println("No file name specified as argument.");
@@ -71,4 +68,21 @@ public class Zadatak_03 {
 			System.out.println(e.getMessage());
 		}
     }
+}
+/**
+ * Simple class for testing and calling main class of file handler.
+ * @author 
+ */
+public class Zadatak_03 {
+	/**
+	 * Main method that finds text file and passes it to the main class as a first argument.
+	 * @param args
+	 * @throws IOException
+	 */
+	public static void main(String[] args) throws IOException {
+		// tmp variable for debugging
+		args = new String[]{System.getProperty("user.dir") + "\\zadaci_02_08_2016\\test.txt"};
+		System.out.println("First class is called first.\n" + args[0]);
+		Main_Zadatak_03.main(args);
+	}
 }
