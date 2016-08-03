@@ -60,6 +60,11 @@ public class Zadatak_05 {
 	 * @return list that has user entered values
 	 */
 	public static int[] fillListFromConsoleInput(int[] list) {
+		// chack if passed list has value
+		if (list == null || list.length < 1) {
+			System.out.println("Cant fill list that has no values or is null.(null is returned)");
+			return null;
+		}
 		// set default values
 		int inputNumber = 1, counter = 0;
 		// loop until 0 is entered
