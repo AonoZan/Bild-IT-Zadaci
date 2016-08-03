@@ -83,7 +83,6 @@ public class Zadatak_05 {
 					}
 					list = userNumbersTmp;
 				}
-				System.out.println();
 			// if error occurs print message
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
