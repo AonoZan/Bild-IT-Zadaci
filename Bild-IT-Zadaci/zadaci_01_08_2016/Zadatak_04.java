@@ -42,7 +42,7 @@ public class Zadatak_04 {
 	public static int[] sort(int[] list) throws Exception{
 		// if list is null throw an exception with message
 		if (list == null) {
-			throw new Exception("Cant sort list. List has no value(null).");
+			throw new Exception("Can't sort list. List has no value(null).");
 		}
 		// loop from first element to next-to lasto one
 		for (int i = 0; i < list.length-1; i++) {
@@ -76,7 +76,7 @@ public class Zadatak_04 {
 			for (int i = 0; i < list.length-1; i++) {
 				System.out.printf("%d, ", list[i]);
 			}
-			// pprint last element, add dot sighn and switch to new line
+			// print last element, add dot sighn and switch to new line
 			System.out.println(list[list.length-1] + ".");
 		// if it is throw exception with message
 		} else {

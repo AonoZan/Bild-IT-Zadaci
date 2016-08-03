@@ -56,7 +56,7 @@ public class Zadatak_05 {
 	/**
 	 * Method to make easy entering lots of integer values from console.
 	 * List will be updated and new values will be added infinetely until 0 value is entered.
-	 * @param list to be filled with walues
+	 * @param list to be filled with values
 	 * @return list that has user entered values
 	 */
 	public static int[] fillListFromConsoleInput(int[] list) {
