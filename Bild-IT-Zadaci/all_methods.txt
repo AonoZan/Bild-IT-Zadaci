@@ -1,4 +1,4 @@
-All the methods for selebrating "code-reuse" movement \m/
+All the methods on one place to celebrate "code-reuse" movement \m/
 
 Zadaci_01_08_2016
 	Zadatak_01
@@ -18,9 +18,22 @@ Zadaci_01_08_2016
 		public static int[] fillListFromConsoleInput(int[] list)
 		public static void printLargest(int[] list)
 zadaci_02_08_2016
-	Zadatak_05
+	Zadatak_01
 		public static void printList(int[] list, String[] separators, int alignment, int newLine)
 		public static void printList(ArrayList<Integer> list, String[] separators, int alignment, int newLine)
+	Zadatak_02
+		public static int genRandInt(int from, int to)
+		public static void askSimpleQuestion(int[] questionModifiers, String[] operation)
+	Zadatak_03
+		public static void printFileTextStatus(File file)
+		public static void main(String[] args) // takes file path as argument, prints status
+	Zadatak_04
+		public static void printMatrix(int n)
+	Zadatak_05
+		public static int[] throwCoin(int howManyTimes)
+zadaci_03_08_2016
+	Zadatak_01
+		public static boolean isPrime(int number){
 
 
 
