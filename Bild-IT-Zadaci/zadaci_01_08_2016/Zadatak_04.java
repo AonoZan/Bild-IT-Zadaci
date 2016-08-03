@@ -8,7 +8,7 @@ public class Zadatak_04 {
 	 * @param from any random value bigger than this number
 	 * @param to any random walue less than this number
 	 * @param amount of how big list should be
-	 * @return List that contains random nummbers
+	 * @return List that contains random nummbers or null if from and to arguments are same value
 	 * @throws Exception If value parameter is invalid
 	 */
 	public static int[] generateRandom(int from, int to, int amount) throws Exception{
@@ -18,6 +18,14 @@ public class Zadatak_04 {
 			throw new Exception("Cant generate list of random values.\nAmount value for int list can't be less than 1.");
 		} else {
 			integers = new int[amount];
+		}
+		// if arguments have same value return 0 immediately
+		if (from == to) return null;
+		// or if first argument is bigger than second switch them
+		else if (from > to) {
+			to += from;
+			from = to - from;
+			to -= from;
 		}
 		// loop through list and assign random number for each value
 		for (int i = 0; i < integers.length; i++) {
