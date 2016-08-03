@@ -44,7 +44,7 @@ public class Zadatak_04 {
 		if (list == null) {
 			throw new Exception("Can't sort list. List has no value(null).");
 		}
-		// loop from first element to next-to lasto one
+		// loop from first element to next-to last one
 		for (int i = 0; i < list.length-1; i++) {
 			// set boolean value so that we can exit when we are sure we finished
 			boolean finished = true;
