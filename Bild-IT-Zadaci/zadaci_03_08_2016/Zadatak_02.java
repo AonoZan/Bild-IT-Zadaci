@@ -7,32 +7,7 @@ public class Zadatak_02 {
 	private static java.util.Scanner userInput = new java.util.Scanner(System.in);
 	private static void closeUserInput() {userInput.close();}
 	
-	/**
-	 * Method for cleaning list from specific value. 
-	 * @param list is what will be cleaned
-	 * @param regex every value that match this in list will be removed
-	 * @return list without regex values
-	 */
-	public static double[] cleanList(double[] list, double regex) {
-		// create default values
-		StringBuilder cleanedList = new StringBuilder();
-		int length = 0;
-		// go trough every item in list and append it to sting if its not regex
-		for (double i : list) {
-			if (i != regex) {
-				cleanedList.append(i + " ");
-				length++;
-			}
-		}
-		// make list size match length of how much items are counted
-		list = new double[length];
-		// go trough splited list, convert it to double and add it to list
-		for (String s : cleanedList.toString().split(" ")) {
-			list[list.length-length] = Double.valueOf(s);
-			length--;
-		}
-		return list;
-	}
+	
 	/**
 	 * Method that reads only double or int values values from console.
 	 * If something else is entered an exception is raised.
@@ -56,38 +31,34 @@ public class Zadatak_02 {
 	}
 	/**
 	 * Method to make easy entering lots of decimal values from console.
-	 * List will be updated and new values will be added infinetely until 0 value is entered.
+	 * Pass list of any size and list will be updated with new values.
 	 * @param list to be filled with values
+	 * @param fixedLength boolean value to tell if list is of fixed length or one that will be filled infinnitely
 	 * @return list that has user entered values
 	 */
-	public static double[] fillListFromConsoleInput(double[] list) {
+	public static double[] fillListFromConsoleInput(double[] list, boolean fixedLength) {
+		// chack if passed list has value
+		if (list == null || list.length < 1) {
+			System.out.println("Cant fill list that has no values or is null.(null is returned)");
+			return null;
+		}
 		// set default values
 		double inputNumber = 1;
-		int counter = 0;
-		// loop until 0 is entered
-		while(inputNumber != 0) {
+		// loop trough whole list
+		System.out.printf("Enter %d decimal value%s: ", list.length, list.length > 1 ? "'s" : "" );
+		for (int i = 0; i < list.length; i++) {
 			// try to get right value from user
 			try {
-				System.out.print("Enter decimal value(0 to stop): ");
 				inputNumber = readFromConsole(inputNumber);
-				list[counter] = inputNumber;
-				counter++;
-				// if list gets filled double the space
-				if (counter == list.length) {
-					double[] userNumbersTmp = new double[counter * 2];
-					for (int i = 0; i < counter; i++) {
-						userNumbersTmp[i] = list[i];
-					}
-					list = userNumbersTmp;
-				}
-				System.out.println();
+				list[i] = inputNumber;
 			// if error occurs print message
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 		}
+		
 		// return cleaned list from zeroes(empty values)
-		return cleanList(list, 0);
+		return list;
 	}
 	/**
 	 * Method for printing list of elements. Useful for debug.
@@ -136,7 +107,7 @@ public class Zadatak_02 {
 	 */
 	public static void main(String[] args) {
 		// create list and fill it with values that user provides
-		double[] userNumbers = fillListFromConsoleInput(new double[1]);
+		double[] userNumbers = fillListFromConsoleInput(new double[10], true);
 //		// try to print list
 //		try {
 //			printList(userNumbers);
