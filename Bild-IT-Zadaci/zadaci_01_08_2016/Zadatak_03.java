@@ -4,9 +4,6 @@ package zadaci_01_08_2016;
 import java.util.InputMismatchException;
 
 public class Zadatak_03 {
-	// Create variable that holds Scanner and method that closes it
-	private static java.util.Scanner userInput = new java.util.Scanner(System.in);
-	private static void closeUserInput() {userInput.close();}
 	/**
 	 * Method that returns greatest common divisor for two numbers. If there is no possible solution 1 is returned.
 	 * It is possible to misplace numbers in arguments(set biggest and then lowest), metod handles this.
@@ -40,13 +37,13 @@ public class Zadatak_03 {
 			System.out.print("Enter two integers: ");
 			// try to get two integers and then break from while loop
 			try {
-				numberOne = userInput.nextInt();
-				numberTwo = userInput.nextInt();
+				numberOne = Zadatak_02.userInput.nextInt();
+				numberTwo = Zadatak_02.userInput.nextInt();
 				break;
 			// catch InputMismatchException print error and clean console
 			} catch (InputMismatchException e) {
 				System.out.printf("Wrong input try again.\n\n");
-				userInput.nextLine();
+				Zadatak_02.userInput.nextLine();
 			// if something unknown and wierd happen bail!
 			} catch (Exception e) {
 				System.out.println("Unknown error. Program terminates...");
@@ -54,7 +51,7 @@ public class Zadatak_03 {
 		}
 		// try to print/clean if something is left inside console
 		try {
-			String garbage = userInput.nextLine();
+			String garbage = Zadatak_02.userInput.nextLine();
 			if (garbage.length() > 0) System.out.printf("\nUnnecesary input garbage:\n>>%s<<\n\n", garbage);
 		// no garbage in console, pass...
 		} catch (Exception e) {}
@@ -63,6 +60,6 @@ public class Zadatak_03 {
 		System.out.printf("Greatest common divisor for %d and %d is %d.",
 				numberOne, numberTwo, greatestCommonDivisor(numberOne, numberTwo));
 		// close Scanner
-		closeUserInput();
+		Zadatak_02.closeUserInput();
 	}
 }

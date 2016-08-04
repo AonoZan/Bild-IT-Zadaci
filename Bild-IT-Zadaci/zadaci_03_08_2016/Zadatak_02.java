@@ -3,11 +3,6 @@
 package zadaci_03_08_2016;
 
 public class Zadatak_02 {
-	// Create variable that holds Scanner and method that closes it
-	private static java.util.Scanner userInput = new java.util.Scanner(System.in);
-	private static void closeUserInput() {userInput.close();}
-	
-	
 	/**
 	 * Method that reads only double or int values values from console.
 	 * If something else is entered an exception is raised.
@@ -17,7 +12,7 @@ public class Zadatak_02 {
 	 */
 	public static double readFromConsole(double number) throws Exception{
 		// gather input
-		String consoleInput = userInput.nextLine().trim();
+		String consoleInput = zadaci_01_08_2016.Zadatak_02.userInput.nextLine().trim();
 		// if only whitespaces are entered raise exception
 		if (consoleInput.length() < 1) throw new Exception("Empty input.(whitespace)");
 		// try to parse double from first word (splited string)
@@ -45,10 +40,11 @@ public class Zadatak_02 {
 		// set default values
 		double inputNumber = 1;
 		// loop trough whole list
-		System.out.printf("Enter %d decimal value%s: ", list.length, list.length > 1 ? "'s" : "" );
+		System.out.printf("Enter %d decimal value%s:\n", list.length, list.length > 1 ? "'s" : "" );
 		for (int i = 0; i < list.length; i++) {
 			// try to get right value from user
 			try {
+				System.out.printf("Enter %d value: ", (i + 1));
 				inputNumber = readFromConsole(inputNumber);
 				list[i] = inputNumber;
 			// if error occurs print message
@@ -112,6 +108,6 @@ public class Zadatak_02 {
 		// print lowest decimal in list
 		System.out.printf("Lowest value taken from console is %.2f.", min(userNumbers));
 		// close Scanner
-		closeUserInput();
+		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }

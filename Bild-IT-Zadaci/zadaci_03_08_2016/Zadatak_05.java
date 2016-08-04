@@ -109,7 +109,7 @@ public class Zadatak_05 {
 		// create new NxN matrix
 		double[][] array = new double[size][size];
 		// fill matrix with values sort it and print to the console
-		array = Zadatak_04.fillListFromConsoleInput(array, true);
+		array = Zadatak_04.fillListFromConsoleInput(array);
 		sortRows(array);
 		System.out.println("Printing sorted matrix:");
 		printList(array);

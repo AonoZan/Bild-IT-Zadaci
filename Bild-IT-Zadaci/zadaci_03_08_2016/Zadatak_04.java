@@ -47,7 +47,7 @@ public class Zadatak_04 {
 	 * @param fixedLength this is argument for java to distinguish between simmilar method that fills list of infinite size
 	 * @return list that has user entered values
 	 */
-	public static double[][] fillListFromConsoleInput(double[][] list, boolean fixedLength) {
+	public static double[][] fillListFromConsoleInput(double[][] list) {
 		// chack if passed list has value
 		if (list == null) {
 			System.out.println("Cant fill list that is null.(null is returned)");
@@ -126,10 +126,11 @@ public class Zadatak_04 {
 		}
 		// create new 2D array and fill it with values
 		double[][] array = new double[row][col];
-		array = fillListFromConsoleInput(array, true);
+		array = fillListFromConsoleInput(array);
 		// get position of the largest element in array and print it
 		int[] position = locateLargest(array);
 		System.out.printf("Largest value in the list is: %.2f[%d, %d].",
 				array[position[0]][position[1]], position[0], position[1]);
+		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }

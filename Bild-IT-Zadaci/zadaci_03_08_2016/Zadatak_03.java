@@ -41,5 +41,7 @@ public class Zadatak_03 {
 		int[] niz2 = Zadatak_05.fillListFromConsoleInput(new int[1]);
 		// print status message if two arrays are equal
 		System.out.printf("Two arrays entered are %sequal.", equals(niz1, niz2) ? "" : "not ");
+		// close scanner
+		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }

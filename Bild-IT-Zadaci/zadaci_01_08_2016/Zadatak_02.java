@@ -4,8 +4,8 @@ package zadaci_01_08_2016;
 
 public class Zadatak_02 {
 	// Create variable that holds Scanner and method that closes it
-	private static java.util.Scanner userInput = new java.util.Scanner(System.in);
-	private static void closeUserInput() {userInput.close();}
+	public static java.util.Scanner userInput = new java.util.Scanner(System.in);
+	public static void closeUserInput() {userInput.close();}
 	
 	/**
 	 * Method that counts vowels in string.<p>

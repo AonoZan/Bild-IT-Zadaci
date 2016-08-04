@@ -3,9 +3,6 @@
 package zadaci_01_08_2016;
 
 public class Zadatak_05 {
-	// Create variable that holds Scanner and method that closes it
-	private static java.util.Scanner userInput = new java.util.Scanner(System.in);
-	public static void closeUserInput() {userInput.close();}
 	/**
 	 * Method for cleaning list from specific value. 
 	 * @param list is what will be cleaned
@@ -41,7 +38,7 @@ public class Zadatak_05 {
 	 */
 	public static int readFromConsole(int number) throws Exception{
 		// gather input
-		String consoleInput = userInput.nextLine().trim();
+		String consoleInput = Zadatak_02.userInput.nextLine().trim();
 		// if only whitespaces are entered raise exception
 		if (consoleInput.length() < 1) throw new Exception("Empty input.(whitespace)");
 		// try to parse int from first word (splited string)
@@ -133,6 +130,8 @@ public class Zadatak_05 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		// prompt user for list of numbers
+		System.out.println("Enter list of numbers:");
 		// create list and fill it with values that user provides
 		int[] userNumbers = fillListFromConsoleInput(new int[1]);
 //		// try to print list
@@ -144,6 +143,6 @@ public class Zadatak_05 {
 		// print status of largest in list and how much of those in list
 		printLargest(userNumbers);
 		// close Scanner
-		closeUserInput();
+		Zadatak_02.closeUserInput();
 	}
 }

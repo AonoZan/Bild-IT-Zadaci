@@ -103,6 +103,6 @@ public class Zadatak_02 {
 		}
 //		System.out.println(numberOfQuestions);
 		askSimpleQuestion(new int[]{numberOfQuestions, 1, 9}, new String[]{"-"});
-		Zadatak_05.closeUserInput();
+		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }

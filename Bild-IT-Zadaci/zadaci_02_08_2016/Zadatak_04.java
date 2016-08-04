@@ -45,6 +45,6 @@ public class Zadatak_04 {
 		}
 		// print matrix with method using right value
 		printMatrix(sizeOfMatrix);
-		zadaci_01_08_2016.Zadatak_05.closeUserInput();
+		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }
