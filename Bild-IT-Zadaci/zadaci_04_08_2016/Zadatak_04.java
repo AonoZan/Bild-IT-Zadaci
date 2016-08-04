@@ -23,6 +23,7 @@ public class Zadatak_04 {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			System.exit(0);
 		}
 	}
 }
