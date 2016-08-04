@@ -20,14 +20,14 @@ public class Zadatak_01 {
 		if (separators == null || separators.length < 2) separators = new String[]{", ", ".\n"};
 		// make sure list is not null
 		if (list != null) {
-			// print all elements except last one with comma separated
+			// print all elements except last one with separators
 			for (int i = 0; i < list.length-1; i++) {
 				if (i % newLine == 0 && i != 0) System.out.println();
 				System.out.printf("%"+alignment+"d"+ separators[0], list[i]);
 			}
 			// go to new line only if there is reminder
 			if (list.length-1 % newLine == 0 || list.length % newLine == 1) System.out.println();
-			// print last element, add dot sighn and switch to new line
+			// print last element, add separator and switch to new line
 			System.out.printf("%"+alignment+"d"+separators[1], list[list.length-1]);
 		// if it is throw exception with message
 		} else {

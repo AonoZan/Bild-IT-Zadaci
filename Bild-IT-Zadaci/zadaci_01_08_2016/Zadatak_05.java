@@ -5,7 +5,7 @@ package zadaci_01_08_2016;
 public class Zadatak_05 {
 	// Create variable that holds Scanner and method that closes it
 	private static java.util.Scanner userInput = new java.util.Scanner(System.in);
-	private static void closeUserInput() {userInput.close();}
+	public static void closeUserInput() {userInput.close();}
 	/**
 	 * Method for cleaning list from specific value. 
 	 * @param list is what will be cleaned
