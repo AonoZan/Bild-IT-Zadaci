@@ -1,6 +1,5 @@
-All the methods on one place to celebrate "code-reuse" movement \m/
-
-Zadaci_01_08_2016
+All the methods on one place to celebrate "code-reuse"
+zadaci_01_08_2016
 	Zadatak_01
 		public static Integer max(ArrayList<Integer>list)
 	Zadatak_02
@@ -41,6 +40,13 @@ zadaci_03_08_2016
 		public static double min(double[] array)
 	Zadatak_03
 		public static boolean equals(int[] niz1, int[]niz2)
+	Zadatak_04
+		public static int[] locateLargest(double[][] a)
+		public static double[][] fillListFromConsoleInput(double[][] list, boolean fixedLength)
+	Zadatak_05
+		public static double[] sort(double[] list)
+		public static double[][] sortRows(double[][] array)
+		public static void printList(double[][] list)
 
 
 
