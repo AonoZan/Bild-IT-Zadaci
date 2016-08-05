@@ -8,6 +8,8 @@ package prijekat_sedmica_01;
  */
 public class Month {
 	private int[] yearMonth = new int[2];
+	private int[][] month = new int[6][7];
+	private int[] reminders = new int[31];
 	private StringBuilder displayString = new StringBuilder();
 	private int startingDay = 1;
 	
@@ -20,7 +22,14 @@ public class Month {
 	Month(int year, int month) {
 		this.yearMonth[1] = year;
 		this.yearMonth[0] = month;
-		updateMonthPresentation();
+		reminders[30] = 2;
+		reminders[11] = 2;
+		for (int i = 0; i < this.month.length; i++) {
+			for (int j = 0; j < this.month[i].length; j++) {
+				this.month[i][j] = (this.month[i].length * i) + (j + 1);
+			}
+		}
+		updateMonthDisplay();
 	}
 	/**
 	 * 
@@ -79,10 +88,26 @@ public class Month {
 		else return 31;
 		
 	}
-	private void updateMonthPresentation() {
-		this.displayString.append(" \t\t" + getMonthName(yearMonth[0]) + " " + yearMonth[1] +"\n");
-		this.displayString.append("_________________________________________________");
-		
+	private void updateMonthDisplay() {
+		this.displayString.append("\t      " + getMonthName(yearMonth[0]) + " " + yearMonth[1] +"\n");
+		this.displayString.append("_________________________________________\n");
+		this.displayString.append(" Sun   Mon   Tue   Wed   Thu   Fri   Sat\n");
+		String day, reminder = "";
+		for (int[] is : month) {
+			for (int i : is) {
+				try {
+					reminder = reminders[i - 1] > 0 ? "|" : " ";
+				} catch (Exception e) {
+
+				}
+				day = String.format(" %s%2s%s ",
+						reminder,
+						i > 0 ? i + "" : "__",
+						reminder);
+				this.displayString.append(day);
+			}
+			this.displayString.append("\n");
+		}
 		System.out.println(displayString);
 	}
 }

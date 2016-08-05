@@ -4,7 +4,7 @@ package prijekat_sedmica_01;
 
 public class _test {
 	public static void main(String[] args) {
-		MonthPresentation month = new MonthPresentation();
+		Month month = new Month();
 		
 	}
 }
