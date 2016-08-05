@@ -57,7 +57,7 @@ public class Zadatak_02 {
 				// if user enters 0 exit
 				if (userPicksCard == 0) {
 					System.out.println("\nExit.");
-					System.exit(0);
+					break;
 				// if user enters wrong value print message that its not existing card
 				}else if (userPicksCard < 1 || userPicksCard > 52) {
 					throw new Exception("There is no card on " + userPicksCard + " place in deck.\n");
@@ -73,5 +73,6 @@ public class Zadatak_02 {
 				System.out.println(e.getMessage() + "Try again.");
 			}
 		}
+		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }
