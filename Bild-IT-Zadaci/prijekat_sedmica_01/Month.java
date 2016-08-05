@@ -24,11 +24,8 @@ public class Month {
 		this.yearMonth[0] = month;
 		reminders[30] = 2;
 		reminders[11] = 2;
-		for (int i = 0; i < this.month.length; i++) {
-			for (int j = 0; j < this.month[i].length; j++) {
-				this.month[i][j] = (this.month[i].length * i) + (j + 1);
-			}
-		}
+		reminders[18] = 2;
+		updateMonth();
 		updateMonthDisplay();
 	}
 	/**
@@ -88,15 +85,23 @@ public class Month {
 		else return 31;
 		
 	}
+	private void updateMonth() {
+		for (int i = 0; i < this.month.length; i++) {
+			for (int j = 0; j < this.month[i].length; j++) {
+				this.month[i][j] = (this.month[i].length * i) + (j + 1);
+			}
+		}
+	}
 	private void updateMonthDisplay() {
 		this.displayString.append("\t      " + getMonthName(yearMonth[0]) + " " + yearMonth[1] +"\n");
 		this.displayString.append("_________________________________________\n");
 		this.displayString.append(" Sun   Mon   Tue   Wed   Thu   Fri   Sat\n");
-		String day, reminder = "";
+		String marked = "|", non_marked = " ";
+		String day, reminder = non_marked;
 		for (int[] is : month) {
 			for (int i : is) {
 				try {
-					reminder = reminders[i - 1] > 0 ? "|" : " ";
+					reminder = reminders[i - 1] > 0 ? marked : non_marked;
 				} catch (Exception e) {
 
 				}
@@ -105,6 +110,7 @@ public class Month {
 						i > 0 ? i + "" : "__",
 						reminder);
 				this.displayString.append(day);
+				reminder = non_marked;
 			}
 			this.displayString.append("\n");
 		}
