@@ -30,6 +30,12 @@ public class Zadatak_01 {
 		}
 		return amountOfMoney;
 	}
+	/**
+	 * Program asks user amount of money he/she wants to save each month and for how many months.
+	 * If user enters wrong value program asks user to enter correct one.
+	 * When user enters values program calculates how much money user will save after given number of months.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		// create variables and ask user for values
 		int monthlySavings = 0, timeInMonths = 0;
@@ -67,8 +73,8 @@ public class Zadatak_01 {
 		}
 		// calculate amount of money after given number of months and print it to console
 		double amountOfMoneyAfter = calculateAccountSavings((0.05 / 12), monthlySavings, timeInMonths);
-		System.out.printf("You will have %.2f on account after %d months.",
-				amountOfMoneyAfter, timeInMonths);
+		System.out.printf("You will have %.2f on account after %d month%s.",
+				amountOfMoneyAfter, timeInMonths, timeInMonths > 1 ? "'s" : "");
 		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }
