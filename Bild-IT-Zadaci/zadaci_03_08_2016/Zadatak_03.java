@@ -34,11 +34,14 @@ public class Zadatak_03 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// ask user for two arrays
+		System.out.println("Enter values for two array(max 100 values per array)");
+		// ask user for two arrays and clean them if not fillet till top
 		System.out.println("Enter first array: ");
-		int[] niz1 = Zadatak_05.fillListFromConsoleInput(new int[1]);
+		int[] niz1 = Zadatak_05.fillListFromConsoleInput(new int[100]);
+		niz1 = zadaci_01_08_2016.Zadatak_05.cleanList(niz1, 0);
 		System.out.println("Enter second array: ");
-		int[] niz2 = Zadatak_05.fillListFromConsoleInput(new int[1]);
+		int[] niz2 = Zadatak_05.fillListFromConsoleInput(new int[100]);
+		niz2 = zadaci_01_08_2016.Zadatak_05.cleanList(niz2, 0);
 		// print status message if two arrays are equal
 		System.out.printf("Two arrays entered are %sequal.", equals(niz1, niz2) ? "" : "not ");
 		// close scanner

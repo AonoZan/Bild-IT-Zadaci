@@ -10,6 +10,11 @@ public class Zadatak_05 {
 	 * @return
 	 */
 	public static int[] cleanList(int[] list, int regex) {
+		// check if list can be cleaned
+		if (list == null) {
+			System.out.println("Can't clean list(null argument).");
+			return null;
+		} else if (list.length == 1) return list;
 		// create default values
 		StringBuilder cleanedList = new StringBuilder();
 		int length = 0;
@@ -19,6 +24,11 @@ public class Zadatak_05 {
 				cleanedList.append(i + " ");
 				length++;
 			}
+		}
+		// if all item are cleaned return null
+		if (cleanedList.length() < 1) {
+			System.out.println("All items cleaned from list.");
+			return null;
 		}
 		// make list size match length of how much items are counted
 		list = new int[length];
@@ -65,28 +75,20 @@ public class Zadatak_05 {
 		// set default values
 		int inputNumber = 1, counter = 0;
 		// loop until 0 is entered
-		while(inputNumber != 0) {
+		while(inputNumber != 0 && counter < list.length) {
 			// try to get right value from user
 			try {
-				System.out.print("Enter number(0 to stop): ");
+				System.out.print("Enter " + counter + " value: ");
 				inputNumber = readFromConsole(inputNumber);
 				list[counter] = inputNumber;
 				counter++;
-				// if list gets filled double the space
-				if (counter == list.length) {
-					int[] userNumbersTmp = new int[counter * 2];
-					for (int i = 0; i < counter; i++) {
-						userNumbersTmp[i] = list[i];
-					}
-					list = userNumbersTmp;
-				}
 			// if error occurs print message
 			} catch (Exception e) {
-				System.out.println(e.getMessage());
+				System.out.println(e.getMessage() + " Try again.");
 			}
 		}
 		// return cleaned list from 0
-		return cleanList(list, 0);
+		return list;
 	}
 	/**
 	 * Method for printing status message of occurence of largest number in list.
@@ -94,6 +96,10 @@ public class Zadatak_05 {
 	 * @param list of integers
 	 */
 	public static void printLargest(int[] list) {
+		if (list == null) {
+			System.out.println("Can't print largest(argument is null).");
+			return;
+		}
 		int[] sortedList;
 		String fixWord = "";
 		try {
@@ -133,7 +139,8 @@ public class Zadatak_05 {
 		// prompt user for list of numbers
 		System.out.println("Enter list of numbers:");
 		// create list and fill it with values that user provides
-		int[] userNumbers = fillListFromConsoleInput(new int[1]);
+		int[] userNumbers = fillListFromConsoleInput(new int[100]);
+		userNumbers = cleanList(userNumbers, 0);
 //		// try to print list
 //		try {
 //			Zadatak_04.printList(userNumbers);

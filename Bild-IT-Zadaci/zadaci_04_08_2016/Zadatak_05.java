@@ -29,33 +29,29 @@ public class Zadatak_05 {
 	public static void main(String[] args) {
 		// create list and variable that will store user input
 		int[] list = new int[100];
-		int userInput = 0;
 		// loop trough whole list
 		System.out.println("Enter numbers(0 breaks input, max input values 100)");
-		for (int i = 0; i < list.length; i++) {
 			try {
-				// prompt user for correct integer value
-				System.out.printf("Enter %d value: ", (i + 1));
-				userInput = zadaci_01_08_2016.Zadatak_05.readFromConsole(userInput);
-				// if user enters 0 break
-				if (userInput == 0) break;
-				// or add item to the list
-				list[i] = userInput;
+				// fill list with correct integer value
+				zadaci_01_08_2016.Zadatak_05.fillListFromConsoleInput(list);
 			// print error message and reset counter
 			} catch (Exception e) {
-				System.out.println(e.getMessage() + " Try again.");
-				i--;
+				System.out.println(e.getMessage());
 			}
-		}
 		// clean list from empty items
 		list = zadaci_01_08_2016.Zadatak_05.cleanList(list, 0);
+		// if user entered empty list exit
+		if (list == null) {
+			System.out.println("You didn't entered any value.");
+			System.exit(0);
+		}
 		// calculate average from sum of all items and count how many that are below average
 		int average = (int)(sum(list) / list.length), belowAverage = 0;
 		for (int i : list) {
 			if (i < average) belowAverage++;
 		}
 		System.out.printf("List status:"
-				+ "\n\tBelow awerage in list count: %d"
+				+ "\n\tBelow average in list count: %d"
 				+ "\n\tAbove or equal to average: %d",
 				belowAverage, list.length - belowAverage);
 	}
