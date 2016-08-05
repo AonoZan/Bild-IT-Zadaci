@@ -3,6 +3,13 @@
 package zadaci_05_08_2016;
 
 public class Zadatak_01 {
+	/**
+	 * Method calculates amount of savings from monthly rate, amount of savings each month and number of month.
+	 * @param monthlyRate Percentage of monthly interest rate.
+	 * @param amountOfMoney Amount of money that will be saved.
+	 * @param numberOfMonths Number of months.
+	 * @return Returns 0 if any of the arguments is 0 or negative. Returns amount of money after certain number of months.
+	 */
 	public static double calculateAccountSavings(double monthlyRate, double amountOfMoney, int numberOfMonths) {
 		// check if arguments are of correct values
 		if (monthlyRate <= 0) {
@@ -15,7 +22,12 @@ public class Zadatak_01 {
 			System.out.println("Can't calculate savings. Number of months zero or negative.");
 			return 0;
 		}
-		
+		// calculate amount of money after given number of months and return that value
+		double monthlySavings = amountOfMoney;
+		amountOfMoney = 0;
+		for (int i = 1; i <= numberOfMonths; i++) {
+			amountOfMoney = (monthlySavings + amountOfMoney) * (1 + monthlyRate);
+		}
 		return amountOfMoney;
 	}
 	public static void main(String[] args) {
@@ -53,7 +65,10 @@ public class Zadatak_01 {
 				System.out.println(e.getMessage() + " Try again.");
 			}
 		}
-		
+		// calculate amount of money after given number of months and print it to console
+		double amountOfMoneyAfter = calculateAccountSavings((0.05 / 12), monthlySavings, timeInMonths);
+		System.out.printf("You will have %.2f on account after %d months.",
+				amountOfMoneyAfter, timeInMonths);
 		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }
