@@ -22,7 +22,7 @@ public class Zadatak_05 {
 		return counter;
 	}
 	/**
-	 * MAin method that asks user to enter string and then it prints how many letters were in string.
+	 * Main method that asks user to enter string and then it prints how many letters were in string.
 	 * @param args
 	 */
 	public static void main(String[] args) {
