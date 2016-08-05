@@ -17,12 +17,21 @@ public class Zadatak_05 {
 		// go trough whole string and check how much letters it contain
 		int counter = 0;
 		for (char ch : s.toCharArray()) {
-			if (ch > 'a' && ch < 'z' || ch > 'A' && ch < 'Z') counter++;
+			if (ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z') counter++;
 		}
 		return counter;
 	}
+	/**
+	 * MAin method that asks user to enter string and then it prints how many letters were in string.
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		
+		// prompt user to enter string
+		System.out.print("Enter string: ");
+		String userString = zadaci_01_08_2016.Zadatak_02.userInput.nextLine();
+		// count letters and print count to the console
+		int letters = countLetters(userString);
+		System.out.printf("String contains %d letters.", letters);
 		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }
