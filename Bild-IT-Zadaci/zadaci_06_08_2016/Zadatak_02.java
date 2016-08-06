@@ -22,7 +22,7 @@ public class Zadatak_02 {
 					startingYear = zadaci_01_08_2016.Zadatak_05.readFromConsole(startingYear);
 					// if user enters number but zero or negative reset year and raise exception
 					if (startingYear < 1) {
-						System.out.printf("Wrong value for year(%d).", startingYear);
+						System.out.printf("Wrong value for year(%d).\n", startingYear);
 						startingYear = 0;
 						throw new Exception("Enter new value.");
 					}
@@ -33,7 +33,7 @@ public class Zadatak_02 {
 					endingYear = zadaci_01_08_2016.Zadatak_05.readFromConsole(startingYear);
 					// if user enters number but zero or negative reset and raise exception
 					if (endingYear < 1) {
-						System.out.printf("Wrong value for year(%d).", startingYear);
+						System.out.printf("Wrong value for year(%d).\n", startingYear);
 						endingYear = 0;
 						throw new Exception("Enter new value.");
 					// or if user enters ending year smaller or equal reset year and ask for another value
