@@ -35,8 +35,26 @@ public class Zadatak_03 {
 		// if number value is equal to reverse of it return true else return false
 		return number == reverse(number) ? true : false;
 	}
+	/**
+	 * Program asks user for one whole number and then tells if that number is palindrome or not.
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		System.out.println(isPalindrome(-45654));
+		// create variable for number and ask user to enter value.
+		int userNumber = 0;
+		while(true) {
+			try {
+				System.out.print("Enter one whole number: ");
+				userNumber = zadaci_01_08_2016.Zadatak_05.readFromConsole(userNumber);
+				break;
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + " Try again.");
+			}
+		}
+		// print message that tells if number is palindrome or not
+		System.out.printf("Number %d %s palindrome",
+				userNumber,
+				isPalindrome(userNumber) ? "is" : "isn't");
 		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
 }
