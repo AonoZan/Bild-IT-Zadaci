@@ -19,8 +19,7 @@ public class Zadatak_04 {
 		boolean fliper = false;
 		for (char ch : userString.toCharArray()) {
 			// if character is alphabetic print character and flip flipper else reset fliper
-			if (Character.isAlphabetic(ch)) System.out.printf("%s", (fliper = !fliper) ? ch + "" : "");
-			else fliper = false;
+			System.out.printf("%s", (fliper = !fliper) ? ch + "" : "");
 		}
 		zadaci_01_08_2016.Zadatak_02.closeUserInput();
 	}
