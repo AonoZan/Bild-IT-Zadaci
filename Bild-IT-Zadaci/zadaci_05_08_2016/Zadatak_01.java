@@ -38,13 +38,14 @@ public class Zadatak_01 {
 	 */
 	public static void main(String[] args) {
 		// create variables and ask user for values
-		int monthlySavings = 0, timeInMonths = 0;
+		double monthlySavings = 0;
+		int timeInMonths = 0;
 		while(true) {
 			try {
 				// if still defauls value for savings try to get correct one and check if it's not zero or negative
 				if (monthlySavings == 0) {
 					System.out.print("Enter amount of money you will save every month: ");
-					monthlySavings = zadaci_01_08_2016.Zadatak_05.readFromConsole(monthlySavings);
+					monthlySavings = zadaci_03_08_2016.Zadatak_02.readFromConsole(monthlySavings);
 					// if user enters wrong value for money politely exit
 					if (monthlySavings == 0) {
 						System.out.println("If you don't save money, no treats for you. :)");
