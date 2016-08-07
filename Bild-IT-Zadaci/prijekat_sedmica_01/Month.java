@@ -12,16 +12,19 @@ public class Month {
 	private int[] reminders = new int[31];
 	private StringBuilder displayString = new StringBuilder();
 	private int startingDay = 1;
+	private int maxDayInMonth;
 	
 	Month() {
-		this(1970);
+		this(2016);
 	}
 	Month(int year) {
-		this(1970, 1);
+		this(year, 8);
 	}
 	Month(int year, int month) {
 		this.yearMonth[1] = year;
 		this.yearMonth[0] = month;
+		this.maxDayInMonth = getMaxDay(year, month);
+		this.startingDay = getStartingDay(year, month);
 		reminders[30] = 2;
 		reminders[11] = 2;
 		reminders[18] = 2;
@@ -74,8 +77,8 @@ public class Month {
 		if (year > 0 && (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)) return true;
 		return false;
 	}
-	// 31 29 31 30 31 30 31 31 30 31 30 31
-	public static int getMaxDayInMonth(int year, int month) {
+	// 31 29 31 30 31 30 31 31 30 31 30 31 as
+	public static int getMaxDay(int year, int month) {
 		if (month < 1 || month > 12 || year < 1) {
 			System.out.println("Can't return max value for month(wrong argument).");
 			return 0;
@@ -85,10 +88,16 @@ public class Month {
 		else return 31;
 		
 	}
+	public static int getStartingDay(int year, int month) {
+		return 2;
+	}
 	private void updateMonth() {
 		for (int i = 0; i < this.month.length; i++) {
 			for (int j = 0; j < this.month[i].length; j++) {
-				this.month[i][j] = (this.month[i].length * i) + (j + 1);
+				int currentDay;
+				if (i == 0 && j < startingDay) continue;
+				else if ((currentDay = (this.month[i].length * i) + (j + 1) - this.startingDay) <= this.maxDayInMonth)
+					this.month[i][j] = currentDay;
 			}
 		}
 	}
