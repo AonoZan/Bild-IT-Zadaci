@@ -22,16 +22,20 @@ public class Zadatak_03 {
 	/**
 	 * Method for checking if number is palindrome.
 	 * Number is palindrome if reversed value of that number is the same as number.
+	 * Negative number can't be palindrome.
 	 * <p><b>Example:</b>
 	 * <br>345 != 543 (not palindrome)
 	 * <br>373 == 373 (palindrome)
 	 * <br>34843 == 34843 (palindrome)
 	 * @param number any number
+	 * @see <a href="http://www.wikipedia.org/wiki/Palindromic_number">Palindromic number</a>
 	 * @return true if number is palindrome or false if it's not
 	 */
 	public static boolean isPalindrome(int number) {
-		// if one digit number return it
-		if (number < 10 && number > -10) return true;
+		// negative numbers are not palinfrome
+		if (number < 1) return false;
+		// if one digit number it is palindrome
+		else if (number < 10 && number > 0) return true;
 		// if number value is equal to reverse of it return true else return false
 		return number == reverse(number) ? true : false;
 	}
