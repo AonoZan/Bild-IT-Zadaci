@@ -11,20 +11,23 @@ public class Month {
 	private int[][] month = new int[6][7];
 	private int[] reminders = new int[31];
 	private StringBuilder displayString = new StringBuilder();
-	private int startingDay = 1;
+	private int startingDay;
 	private int maxDayInMonth;
 	
 	Month() {
 		this(2016);
 	}
 	Month(int year) {
-		this(year, 8);
+		this(year, 1);
 	}
 	Month(int year, int month) {
-		this.yearMonth[1] = year;
-		this.yearMonth[0] = month;
-		this.maxDayInMonth = getMaxDay(year, month);
-		this.startingDay = getStartingDay(year, month);
+		this.yearMonth[0] = year;
+		this.yearMonth[1] = month;
+		updateEverything();
+	}
+	private void updateEverything(){
+		this.maxDayInMonth = getMaxDay(this.yearMonth[0], this.yearMonth[1]);
+		this.startingDay = getStartingDay(this.yearMonth[0], this.yearMonth[1]);
 		reminders[30] = 2;
 		reminders[11] = 2;
 		reminders[18] = 2;
@@ -88,8 +91,30 @@ public class Month {
 		else return 31;
 		
 	}
+	// Method from book(Java Essensials)
+	/** Get the start day of month/1/year */
 	public static int getStartingDay(int year, int month) {
-		return 2;
+		final int START_DAY_FOR_JAN_1_1800 = 3;
+		// Get total number of days from 1/1/1800 to month/1/year
+		int totalNumberOfDays = getTotalNumberOfDays(year, month);
+		
+		// Return the start day for month/1/year
+		return (totalNumberOfDays + START_DAY_FOR_JAN_1_1800) % 7;
+	}
+	// Method from book(Java Essensials)
+	/** Get the total number of days since January 1, 1800 */
+	public static int getTotalNumberOfDays(int year, int month) {
+		int total = 0;
+		// Get the total days from 1800 to 1/1/year
+		for (int i = 1800; i < year; i++)
+			if (isLeap(i))
+				total = total + 366;
+			else
+				total = total + 365;
+		// Add days from Jan to the month prior to the calendar month
+		for (int i = 1; i < month; i++)
+			total = total + getMaxDay(year, i);
+		return total;
 	}
 	private void updateMonth() {
 		for (int i = 0; i < this.month.length; i++) {
@@ -102,7 +127,7 @@ public class Month {
 		}
 	}
 	private void updateMonthDisplay() {
-		this.displayString.append("\t      " + getMonthName(yearMonth[0]) + " " + yearMonth[1] +"\n");
+		this.displayString.append("\t      " + getMonthName(yearMonth[1]) + " " + yearMonth[0] +"\n");
 		this.displayString.append("_________________________________________\n");
 		this.displayString.append(" Sun   Mon   Tue   Wed   Thu   Fri   Sat\n");
 		String marked = "|", non_marked = " ";
@@ -116,13 +141,14 @@ public class Month {
 				}
 				day = String.format(" %s%2s%s ",
 						reminder,
-						i > 0 ? i + "" : "__",
+						i > 0 ? i + "" : "  ",
 						reminder);
 				this.displayString.append(day);
 				reminder = non_marked;
 			}
 			this.displayString.append("\n");
 		}
+		this.displayString.append("-----------------------------------------\n");
 		System.out.println(displayString);
 	}
 }
