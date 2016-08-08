@@ -2,7 +2,6 @@
  */
 package prijekat_sedmica_01;
 
-import java.time.YearMonth;
 
 /**
  * 
@@ -28,12 +27,14 @@ public class Month {
 		this.yearMonth[1] = month;
 		updateEverything();
 	}
+	public void setReminders(int[] reminders) {
+		for (int i = 0; i < this.reminders.length; i++) {
+			this.reminders[i] = reminders[i];
+		}
+	}
 	private void updateEverything(){
 		this.maxDayInMonth = getMaxDay(this.yearMonth[0], this.yearMonth[1]);
 		this.startingDay = getStartingDay(this.yearMonth[0], this.yearMonth[1]);
-		reminders[30] = 2;
-		reminders[11] = 2;
-		reminders[18] = 2;
 		updateMonth();
 		updateMonthDisplay();
 	}
@@ -41,7 +42,6 @@ public class Month {
 	public void updateDate(int year, int month) {
 		this.yearMonth[0] = year;
 		this.yearMonth[1] = month;
-		System.out.println(month + "  " + year);
 		updateEverything();
 		
 	}
@@ -152,7 +152,7 @@ public class Month {
 			}
 		}
 	}
-	private void updateMonthDisplay() {
+	public void updateMonthDisplay() {
 		this.displayString.setLength(0);
 //		this.displayString.append("\t      " + getMonthName(yearMonth[1]) + " " + yearMonth[0] +"\n");
 //		this.displayString.append("_________________________________________\n");

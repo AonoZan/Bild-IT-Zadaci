@@ -17,6 +17,8 @@ public class App {
 	App(){
 		this.month = new Month();
 		this.reminders = new Reminders();
+		this.month.setReminders(this.reminders.getRemindersCount());
+		month.updateMonthDisplay();
 	}
 	
 	public boolean isActive() {
@@ -52,6 +54,9 @@ public class App {
 			break;
 		case 3:
 			addReminder();
+			break;
+		case 4:
+			deleteReminders();
 			break;
 		case 5:
 			updateMonth();
@@ -103,6 +108,8 @@ public class App {
 		input.nextLine();
 		String reminder = input.nextLine();
 		reminders.addReminder(day, reminder);
+		this.month.setReminders(this.reminders.getRemindersCount());
+		month.updateMonthDisplay();
 		this.screen = 0;
 	}
 	private void showCalendar() {
@@ -137,6 +144,26 @@ public class App {
 		printScreen("Calendar\n", message);
 		int month = input.nextInt();
 		this.month.updateDate(year, month);
+		this.reminders = new Reminders(new int[]{year, month});
+		this.month.setReminders(this.reminders.getRemindersCount());
+		this.month.updateMonthDisplay();
+		this.screen = 0;
+		
+	}
+	private void deleteReminders() {
+		this.message = ""
+				+ "\n"
+				+ "\nWhich month reminders you want to remove(1 " + month.getCurrentMaxDay() + ")."
+				+ "\nPress enter to proceed."
+				+ "\n"
+				+ "\n"
+				+ "\n"
+				+ "\n";
+		printScreen("Calendar\n", message);
+		int day = input.nextInt();
+		this.reminders.removeReminders(day);
+		this.month.setReminders(this.reminders.getRemindersCount());
+		month.updateMonthDisplay();
 		this.screen = 0;
 		
 	}
@@ -146,7 +173,7 @@ public class App {
 				+ "1 : Show calendar\n"
 				+ "2 : Show reminder\n"
 				+ "3 : Add reminder\n"
-				+ "4 : Clear reminders\n"
+				+ "4 : Delete reminders\n"
 				+ "5 : Change month\n"
 				+ "6 : Exit\n";
 		printScreen("Calendar\n", message);

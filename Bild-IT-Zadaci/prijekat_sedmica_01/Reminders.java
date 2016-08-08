@@ -10,23 +10,28 @@ import java.util.Scanner;
 public class Reminders {
 	private int[] yearMonth = new int[2];
 	private String[][] monthReminders;
-	private String filePath, filename;
+	private String filePath = System.getProperty("user.dir") + "\\notes\\", filename;
 	
-	Reminders(){
-		this(System.getProperty("user.dir") + "\\notes\\");
+	Reminders() {
+		this(new int[]{2016, 1});
 	}
-	Reminders(String filePath) {
-		this(filePath, new int[]{2016, 1});
-	}
-	Reminders(String filePath, int[] yearMonth) {
-		this.filePath = filePath;
+	Reminders(int[] yearMonth) {
 		this.yearMonth = yearMonth;
 		this.filename = updateFilename(1);
 		this.monthReminders = readReminders();
 		
 	}
+	
 	private String updateFilename(int day) {
 		return String.format("%02d_%02d_%4d.txt", day, yearMonth[1], yearMonth[0]);
+	}
+	public int[] getRemindersCount() {
+		int[] count = new int[31];
+		for (int i = 0; i < monthReminders.length; i++) {
+			if (monthReminders[i] == null) count[i] = 0;
+			else count[i] = monthReminders[i].length;
+		}
+		return count;
 	}
 	public String getReminders(int day) {
 		if (monthReminders[day - 1] == null) return "\n\nNo reminders for this day.\n\n\n\n\n";
@@ -52,7 +57,7 @@ public class Reminders {
 			this.filename = updateFilename(i + 1);
 			File file = new File(filePath + filename);
 			if (!file.exists()) {
-				System.out.printf("File for %d day doesnt exist.\n", i + 1);
+//				System.out.printf("File for %d day doesnt exist.\n", i + 1);
 				monthReminders[i] = null;
 				continue;
 			}
@@ -80,7 +85,7 @@ public class Reminders {
 		
 		try {
 			BufferedWriter output = new BufferedWriter(new FileWriter(file, true));
-			output.write(reminder);
+			output.write(reminder + "\n");
 			output.close();
 		} catch (Exception e){
 			System.out.println("File can't be written.");
@@ -88,7 +93,6 @@ public class Reminders {
 		String[] newList;
 		if (this.monthReminders[day - 1] == null) {
 			monthReminders[day - 1] = new String[]{reminder};
-			System.out.println(monthReminders[day - 1][0] + "added");
 			return;
 		}
 		newList  = new String[this.monthReminders[day - 1].length + 1];
@@ -98,9 +102,12 @@ public class Reminders {
 		}
 		newList[newList.length - 1] = reminder;
 		monthReminders[day - 1] = newList;
-//		this.monthReminders[day];
 	}
-	public void removeReminder(int day, String reminder){
-		
+	public void removeReminders(int day){
+		String fileToRemove = updateFilename(day);
+		this.monthReminders[day - 1] = null ;
+		File file = new File(filePath + fileToRemove);
+		file.delete();
+		System.out.println(file.getAbsolutePath());
 	}
 }
