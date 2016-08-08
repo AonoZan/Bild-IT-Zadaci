@@ -34,6 +34,20 @@ public class Month {
 		updateMonth();
 		updateMonthDisplay();
 	}
+	
+	public void updateDate(int year, int month) {
+		this.yearMonth[0] = year;
+		this.yearMonth[1] = month;
+		updateEverything();
+		
+	}
+	public String getDisplayString() {
+		return displayString.toString();
+	}
+	
+	public int[] getYearMonth() {
+		return yearMonth;
+	}
 	/**
 	 * 
 	 * @param month
@@ -127,8 +141,9 @@ public class Month {
 		}
 	}
 	private void updateMonthDisplay() {
-		this.displayString.append("\t      " + getMonthName(yearMonth[1]) + " " + yearMonth[0] +"\n");
-		this.displayString.append("_________________________________________\n");
+		this.displayString.setLength(0);
+//		this.displayString.append("\t      " + getMonthName(yearMonth[1]) + " " + yearMonth[0] +"\n");
+//		this.displayString.append("_________________________________________\n");
 		this.displayString.append(" Sun   Mon   Tue   Wed   Thu   Fri   Sat\n");
 		String marked = "|", non_marked = " ";
 		String day, reminder = non_marked;
@@ -148,7 +163,6 @@ public class Month {
 			}
 			this.displayString.append("\n");
 		}
-		this.displayString.append("-----------------------------------------\n");
-		System.out.println(displayString);
+//		this.displayString.append("-----------------------------------------\n");
 	}
 }

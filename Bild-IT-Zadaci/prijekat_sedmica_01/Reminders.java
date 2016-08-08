@@ -8,9 +8,9 @@ public class Reminders {
 		this.monthReminders = new String[31][];
 	}
 	Reminders(String filePath) {
-		this.monthReminders = readReminders();
+		this.monthReminders = readReminders(filePath);
 	}
-	private String[][] readReminders() {
+	private String[][] readReminders(String filePath) {
 		monthReminders = new String[31][];
 		return monthReminders;
 	}

@@ -4,7 +4,11 @@ package prijekat_sedmica_01;
 
 public class _test {
 	public static void main(String[] args) {
-		Month month = new Month();
+		App aplication = new App();
+		while(aplication.isActive()) {
+			aplication.run();
+		}
+		aplication.exit();
 		
 	}
 }
