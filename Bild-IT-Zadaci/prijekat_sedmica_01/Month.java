@@ -4,8 +4,7 @@ package prijekat_sedmica_01;
 
 
 /**
- * 
- * @author AonoZan
+ * Class that stores information about month.
  * @see <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Time</a>
  */
 public class Month {
@@ -27,35 +26,46 @@ public class Month {
 		this.yearMonth[1] = month;
 		updateEverything();
 	}
+	public String getDisplayString() {
+		return displayString.toString();
+	}
+	public int[] getYearMonth() {
+		return yearMonth;
+	}
+	public int getCurrentMaxDay() {
+		return Month.getMaxDay(this.yearMonth[0], this.yearMonth[1]);
+	}
+	/**
+	 * Method for setting reminders count that can be used to mark days that contains reminders.
+	 */
 	public void setReminders(int[] reminders) {
 		for (int i = 0; i < this.reminders.length; i++) {
 			this.reminders[i] = reminders[i];
 		}
 	}
+	/**
+	 * Method that updates everything.
+	 */
 	private void updateEverything(){
-		this.maxDayInMonth = getMaxDay(this.yearMonth[0], this.yearMonth[1]);
-		this.startingDay = getStartingDay(this.yearMonth[0], this.yearMonth[1]);
-		updateMonth();
-		updateMonthDisplay();
-	}
-	
-	public void updateDate(int year, int month) {
-		this.yearMonth[0] = year;
-		this.yearMonth[1] = month;
-		updateEverything();
-		
-	}
-	public String getDisplayString() {
-		return displayString.toString();
-	}
-	
-	public int[] getYearMonth() {
-		return yearMonth;
+		this.maxDayInMonth = getMaxDay(this.yearMonth[0], this.yearMonth[1]);	// recalculate maximum number of days
+		this.startingDay = getStartingDay(this.yearMonth[0], this.yearMonth[1]);// recalculate first day in month
+		updateMonth();															// update list that contains days
+		updateMonthDisplay();													// update string that comntains month visualy represented
 	}
 	/**
-	 * 
+	 * Method for jumping on another month
+	 * @param year
 	 * @param month
-	 * @return
+	 */
+	public void updateDate(int year, int month) {
+		this.yearMonth[0] = year;
+		this.yearMonth[1] = month;	// update year and month date	
+		updateEverything();			// and recalculate everything
+	}
+	/**
+	 * Method for converting numbers into month names.
+	 * @param month number from 1 to 12
+	 * @return Month name eg. January
 	 */
 	public static String getMonthName(int month) {
 		switch (month) {
@@ -95,13 +105,16 @@ public class Month {
 	 * @return true if year is leap, false if year is zero, negative or not leap
 	 */
 	public static boolean isLeap(int year){
+		// year is leap if it's divisable with 4 and not with 100 or if divisable with 400
 		if (year > 0 && (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)) return true;
 		return false;
 	}
-	// 31 29 31 30 31 30 31 31 30 31 30 31 as
-	public int getCurrentMaxDay() {
-		return Month.getMaxDay(this.yearMonth[0], this.yearMonth[1]);
-	}
+	/**
+	 * Method for retriving max number of days for certain month.
+	 * @param year
+	 * @param month
+	 * @return
+	 */
 	public static int getMaxDay(int year, int month) {
 		if (month < 1 || month > 12 || year < 1) {
 			System.out.println("Can't return max value for month(wrong argument).");
@@ -137,44 +150,49 @@ public class Month {
 			total = total + getMaxDay(year, i);
 		return total;
 	}
+	/**
+	 * Method that updates 2D list of days.
+	 */
 	private void updateMonth() {
-		
+		// for every week and day
 		for (int i = 0; i < this.month.length; i++) {
 			for (int j = 0; j < this.month[i].length; j++) {
+				// if it's smaller than starting day in a week skip
 				int currentDay;
 				if (i == 0 && j < startingDay) {
 					this.month[i][j] = 0;
 					continue;
 				}
+				// if it's not bigger than max day in month add it to the list else add 0
 				if ((currentDay = (this.month[i].length * i) + (j + 1) - this.startingDay) <= this.maxDayInMonth)
 					this.month[i][j] = currentDay;
 				else this.month[i][j] = 0;
 			}
 		}
 	}
+	/**
+	 * Method that constructs string that represent month
+	 */
 	public void updateMonthDisplay() {
-		this.displayString.setLength(0);
-//		this.displayString.append("\t      " + getMonthName(yearMonth[1]) + " " + yearMonth[0] +"\n");
-//		this.displayString.append("_________________________________________\n");
-		this.displayString.append(" Sun   Mon   Tue   Wed   Thu   Fri   Sat\n");
-		String marked = "|", non_marked = " ";
-		String day, reminder = non_marked;
-		for (int[] is : month) {
-			for (int i : is) {
-				try {
+		this.displayString.setLength(0);										// reset each time
+		this.displayString.append(" Sun   Mon   Tue   Wed   Thu   Fri   Sat\n");// add names of days
+		String marked = "|", non_marked = " ";									// create strings that wil be used to mark days that have reminders
+		String day, reminder = non_marked;										// create day and set it's not marked
+		for (int[] is : month) {												// loop for ewery week in month
+			for (int i : is) {													// and for every day in week
+				try {															// if theres reminders on that day mark it
 					reminder = reminders[i - 1] > 0 ? marked : non_marked;
-				} catch (Exception e) {
-
-				}
+				} catch (Exception e) {}
+				// build string for each day
 				day = String.format(" %s%2s%s ",
 						reminder,
 						i > 0 ? i + "" : "  ",
 						reminder);
+				// append that string and reset reminder
 				this.displayString.append(day);
 				reminder = non_marked;
 			}
 			this.displayString.append("\n");
 		}
-//		this.displayString.append("-----------------------------------------\n");
 	}
 }
