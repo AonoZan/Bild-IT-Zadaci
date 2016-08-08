@@ -1,6 +1,9 @@
 /**@autor AonoZan Dejan Petrovic 2016 ©
  */
 package prijekat_sedmica_01;
+
+import java.time.YearMonth;
+
 /**
  * 
  * @author AonoZan
@@ -38,6 +41,7 @@ public class Month {
 	public void updateDate(int year, int month) {
 		this.yearMonth[0] = year;
 		this.yearMonth[1] = month;
+		System.out.println(month + "  " + year);
 		updateEverything();
 		
 	}
@@ -95,6 +99,9 @@ public class Month {
 		return false;
 	}
 	// 31 29 31 30 31 30 31 31 30 31 30 31 as
+	public int getCurrentMaxDay() {
+		return Month.getMaxDay(this.yearMonth[0], this.yearMonth[1]);
+	}
 	public static int getMaxDay(int year, int month) {
 		if (month < 1 || month > 12 || year < 1) {
 			System.out.println("Can't return max value for month(wrong argument).");
@@ -131,12 +138,17 @@ public class Month {
 		return total;
 	}
 	private void updateMonth() {
+		
 		for (int i = 0; i < this.month.length; i++) {
 			for (int j = 0; j < this.month[i].length; j++) {
 				int currentDay;
-				if (i == 0 && j < startingDay) continue;
-				else if ((currentDay = (this.month[i].length * i) + (j + 1) - this.startingDay) <= this.maxDayInMonth)
+				if (i == 0 && j < startingDay) {
+					this.month[i][j] = 0;
+					continue;
+				}
+				if ((currentDay = (this.month[i].length * i) + (j + 1) - this.startingDay) <= this.maxDayInMonth)
 					this.month[i][j] = currentDay;
+				else this.month[i][j] = 0;
 			}
 		}
 	}
