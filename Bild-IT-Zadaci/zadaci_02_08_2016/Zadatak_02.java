@@ -36,18 +36,18 @@ public class Zadatak_02 {
 	 */
 	public static boolean askSimpleQuestion(int[] questionModifiers, String[] operation, boolean forceCorrect) {
 		// make sure that at least one question and operation is asked and used 
-		if (questionModifiers == null || questionModifiers.length != 3) questionModifiers = new int[]{1, 1, 9};
+		if (questionModifiers == null || questionModifiers.length < 2) questionModifiers = new int[]{1, 1, 9};
 		if (operation == null || operation.length == 0) operation = new String[]{"+"};
 		// set default values
 		int result = 0, userAnswer = 0, randomNumber;
 		// generate new random number and add to string and result
-		randomNumber = genRandInt(questionModifiers[1], questionModifiers[2]);
+		randomNumber = genRandInt(questionModifiers[0], questionModifiers[1]);
 		result = randomNumber;
 		String questionString = randomNumber + " ";
 		// loop for any number of operation there is
 		for (String string : operation) {
 			// generate every other number based on how many is needed
-			randomNumber = genRandInt(questionModifiers[1], questionModifiers[2]);
+			randomNumber = genRandInt(questionModifiers[0], questionModifiers[1]);
 			// depending on what current operation is calculate result and update string
 			switch (string) {
 				case "+":
