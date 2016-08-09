@@ -61,19 +61,19 @@ public class Zadatak_02 {
 				default:
 					break;
 			}
-			// try to get user answer
-			while (true) {
-				try {
-					// at the end add equal sign
-					System.out.print(questionString + "= ");
-					userAnswer = Zadatak_05.readFromConsole(userAnswer);
-					if (forceCorrect && result != userAnswer)
-						throw new Exception("That's not correct answer.");
-					break;
-				} catch (Exception e) {
-					System.out.println(e.getMessage() + "\nTry again to answer question. ");
-					
-				}
+		}
+		// try to get user answer
+		while (true) {
+			try {
+				// at the end add equal sign
+				System.out.print(questionString + "= ");
+				userAnswer = Zadatak_05.readFromConsole(userAnswer);
+				if (forceCorrect && result != userAnswer)
+					throw new Exception("That's not correct answer.");
+				break;
+			} catch (Exception e) {
+				System.out.println(e.getMessage() + "\nTry again to answer question. ");
+				
 			}
 		}
 		if (result == userAnswer) return true;
@@ -108,7 +108,7 @@ public class Zadatak_02 {
 		}
 		// loop for number of questions and count correct ones
 		for (int i = 0; i < numberOfQuestions; i++) {
-			if (askSimpleQuestion(new int[]{1, 9}, new String[]{"-"}, true)) 
+			if (askSimpleQuestion(new int[]{1, 9}, new String[]{"-"}, false)) 
 				correctAnswers++;
 		}
 		// print congration message if all correct or status if few are incorrect
