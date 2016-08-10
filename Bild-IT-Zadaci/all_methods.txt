@@ -22,7 +22,7 @@ zadaci_02_08_2016
 		public static void printList(ArrayList<Integer> list, String[] separators, int alignment, int newLine)
 	Zadatak_02
 		public static int genRandInt(int from, int to)
-		public static void askSimpleQuestion(int[] questionModifiers, String[] operation)
+		public static void askSimpleQuestion(int[] questionModifiers, String[] operation, boolean forceCorrect)
 	Zadatak_03
 		public static void printFileTextStatus(File file)
 		public static void main(String[] args) // takes file path as argument, prints status
@@ -47,7 +47,39 @@ zadaci_03_08_2016
 		public static double[] sort(double[] list)
 		public static double[][] sortRows(double[][] array)
 		public static void printList(double[][] list)
-
+zadaci_04_08_2016
+	Zadatak_03
+		public static void displaySortedNumbers(double num1, double num2, double num3)
+	Zadatak_05
+		public static long sum(int[] list)
+zadaci_05_08_2016
+	Zadatak_01
+		public static double calculateAccountSavings(double monthlyRate, double amountOfMoney, int numberOfMonths)
+	Zadatak_02
+		public static void shuffleList(int[] list)
+	Zadatak_03
+		public static String prefix(String first, String second)
+	Zadatak_04
+		public static int[] reverse(int[] list)
+	Zadatak_05
+		public static int countLetters(String s)
+zadaci_06_08_2016
+	Zadatak_03
+		public static int reverse(int number)
+		public static boolean isPalindrome(int number)
+zadaci_08_08_2016
+	Zadatak_02
+		public static String getMonthName(int month)
+		public static boolean isLeap(int year)
+		public static int getMaxDay(int year, int month)
+	Zadatak_03
+		public static int getIndexOf(String[] list, String value)
+	Zadatak_04
+		public static boolean isPerfect(int number)
+zadaci_09_08_2016
+	Zadatak_05
+		public static String convertMillis(long millis)
+	
 
 
 
