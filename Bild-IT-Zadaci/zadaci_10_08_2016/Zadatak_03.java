@@ -10,12 +10,13 @@ public class Zadatak_03 {
 	 */
 	public static void main(String[] args) {
 		int combinations = 0;
+		System.out.println("All combinations in range 1 - 7:");
 		for (int rangeFirst = 1, rangeLast = 7; rangeFirst < rangeLast; rangeFirst++) {			// go trough range first to last number
 			for (int currentNumber = rangeFirst; currentNumber < rangeLast; currentNumber++) {	// go from current range number to last number
-				System.out.println(rangeFirst + "_" + currentNumber);							// print current range number and current number
+				System.out.println(rangeFirst + " " + currentNumber);							// print current range number and current number
 				combinations++;																	// count combination
 			}
 		}
-		System.out.println(combinations);
+		System.out.println("Number of combinations: " + combinations);
 	}
 }
