@@ -79,6 +79,13 @@ zadaci_08_08_2016
 zadaci_09_08_2016
 	Zadatak_05
 		public static String convertMillis(long millis)
+zadaci_10_08_2016
+	Zadatak_01
+		public static int numberOfDayInAYear(int year)
+	Zadatak_04
+		public static int count(String str, char a)
+	Zadatak_05
+		public static boolean isSubstring(String string, String substring)
 	
 
 
