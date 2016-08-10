@@ -23,11 +23,18 @@ public class Zadatak_05 {
 		return false;
 	}
 	/**
-	 * Program tests method isSubstring().
+	 * Program asks user to enter two strings and then checks if second string is substring of the first.
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.print("\"BC\" is substring of \"ABCD\": ");
-		System.out.println(isSubstring("ABCD", "BC"));
+		// get string
+		System.out.print("Enter first string: ");
+		String string = zadaci_01_08_2016.Zadatak_02.userInput.nextLine();
+		// get substring
+		System.out.print("Enter subctring: ");
+		String subString = zadaci_01_08_2016.Zadatak_02.userInput.nextLine();
+		// print message
+		System.out.printf("\"%s\" is substring of \"%s\": ", string, subString);
+		System.out.println(isSubstring(string, subString));
 	}
 }
