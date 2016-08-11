@@ -1,4 +1,4 @@
-/**@autor AonoZan Dejan Petrovic 2016 ©
+/**@autor AonoZan Dejan Petrovic 2016 Â©
  */
 package prijekat_sedmica_01;
 
