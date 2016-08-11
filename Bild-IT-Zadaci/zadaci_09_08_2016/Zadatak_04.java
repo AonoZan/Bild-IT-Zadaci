@@ -14,15 +14,17 @@ public class Zadatak_04 {
 	public static void main(String[] args) {
 		// createt scanner but use delimeter that include only space
 		Scanner input = new Scanner(System.in);
-		input.useDelimiter(" *");
 		// prompt user for numbers and count them until 0 is entered
 		System.out.println("Enter unlimited amount of numbers.");
-		int userNumber = -1, largestNumber = 0, counter = 0;
+		int userNumber = -1, largestNumber = 0, counter = 1;
 		while (userNumber != 0) {
 			// ask for numbers while there is some in scanner
 			System.out.printf("Enter %snumbers: ", counter > 0 ? "some more " : "");
+			// get forst number when program starts
+			if (largestNumber == 0) largestNumber = input.nextInt();
 			while (input.hasNextInt()) {
 				userNumber = input.nextInt();
+				
 				// if number is other than 0 else break
 				if (userNumber != 0) {
 					// if number is largest set largest
