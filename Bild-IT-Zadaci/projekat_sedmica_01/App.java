@@ -1,4 +1,4 @@
-/**@autor AonoZan Dejan Petrovic 2016 ©
+/**@autor AonoZan Dejan Petrovic 2016 Â©
  */
 package prijekat_sedmica_01;
 import java.util.Scanner;
@@ -111,7 +111,7 @@ public class App {
 	 * Method is called each time user wants to show all reminders for certain day.
 	 */
 	private void showReminder() {
-		// šprompt user for day, save it and clear screen
+		// Å¡prompt user for day, save it and clear screen
 		this.message = ""
 				+ "\n"
 				+ "\nShow reminder for which day (1 " + month.getCurrentMaxDay() + ")."
