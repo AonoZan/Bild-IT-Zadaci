@@ -1,6 +1,6 @@
 /**@autor AonoZan Dejan Petrovic 2016 ©
  */
-package prijekat_sedmica_01;
+package projekat_sedmica_01;
 import java.util.Scanner;
 /**
  * Calendar aplication. Uses Month and Reminders classes to read 
