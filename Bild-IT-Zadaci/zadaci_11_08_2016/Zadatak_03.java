@@ -12,6 +12,6 @@ public class Zadatak_03 {
 	public static void main(String[] args) {
 		// create date object and print current date and time
 		Date date = new Date(System.currentTimeMillis());
-		System.out.println(date.toString());
+		System.out.println("Current date and time: " + date.toString());
 	}
 }
