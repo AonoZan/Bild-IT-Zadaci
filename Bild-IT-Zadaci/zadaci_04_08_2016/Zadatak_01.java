@@ -23,7 +23,7 @@ public class Zadatak_01 {
 		}
 		// create variable for divider and print factors
 		int divider = 2;
-		while(userNumber != 0 && userNumber != -1) {
+		while(userNumber > 1 && userNumber != -1) {
 			// if number is divisable with divider print divider and divide number
 			if (userNumber % divider == 0) {
 				// print positive divider or negatove based on value that user entered
