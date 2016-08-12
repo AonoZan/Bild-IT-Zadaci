@@ -2,22 +2,32 @@
  */
 package projekat_sedmica_02;
 
-import javax.xml.bind.helpers.ValidationEventLocatorImpl;
-
-import zadaci_01_08_2016.Zadatak_02;
-
 class CardValidator1 {
-	String example = "Working...";
-	String status = null;
+	private String example = "Working...";
+	private boolean status = false;
 	private String cardType = null;
-	int[][] numberCrunches;
+	private int[][] numberCrunches;
 	public CardValidator1(String number) {
 		updateStatus(number);
 	}
 	// Method that updates everything.
 	public void updateStatus(String number) {
 		this.cardType = cardType(number.charAt(0), number.charAt(1));
-		this.example = updateExample(number);
+		this.status = checkCard(number);
+		this.example = generateExample(number);
+	}
+	
+	public String getExample() {
+		return example;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+	public String getCardType() {
+		return cardType;
+	}
+	public int[][] getNumberCrunches() {
+		return numberCrunches;
 	}
 	// get card type if valid if not return null
 	private String cardType(char firstNum, char secondNum) {
@@ -28,8 +38,28 @@ class CardValidator1 {
 			return "American Express";
 		return null;
 	}
-	//4388576018402626
-	private String updateExample(String number) {
+	private String generateExample(String number) {
+//		StringBuilder example = new StringBuilder();
+		String example = "";
+		String lineH = "-----------------";
+		String lineW = "| | | | | | | | |";
+		boolean fliper = true;
+		for (int i = 0; i < numberCrunches.length; i++) {
+			if (fliper && numberCrunches[i] != null) {
+				if (numberCrunches[i][2] >= 10) {
+					example = " (" + numberCrunches[i][3] + " + " + numberCrunches[i][4] + " = " + numberCrunches[i][5] + ")\n" + example;
+					example = numberCrunches[i][0] + " * 2 = " + numberCrunches[i][2] + example;
+				} else {
+					example = numberCrunches[i][0] + " * 2 = " + numberCrunches[i][2] + "\n" + example;
+				}
+				example = lineW.substring(0, i) + "'" + lineH.substring(0, 16 - i) + "> " + example;
+			}
+			fliper = !fliper;
+		}
+		example = number + "\n" + example;
+		return example;// .toString();
+	}
+	private boolean checkCard(String number) {
 		this.numberCrunches = new int[16][];
 		if (number.length() <= 16) {
 			int allSingleDigits = 0, allOdd = 0;
@@ -50,28 +80,26 @@ class CardValidator1 {
 					} else {
 						allSingleDigits += digit;
 					}
-//					System.out.printf("%d %d\n", allSingleDigits, allOdd);
 				} else {
 					numberCrunches[i][0] = digit;
 					allOdd += digit;
 				}
 				singleDigit = !singleDigit;
 			}
-			return String.format("%d %d", allSingleDigits, allOdd);
+			if (numberCrunches[15] == null)
+				numberCrunches[15] = new int[6];
+			numberCrunches[15][3] = allSingleDigits;
+			numberCrunches[15][4] = allOdd;
+			numberCrunches[15][5] = allSingleDigits + allOdd;
+			return numberCrunches[15][5] % 10 == 0 ? true : false;
 		}
-		return "Number too long.";
+		return false;
 	}
 }
 public class CardValidator {
 	public static void main(String[] args) {
-		CardValidator1 validator = new CardValidator1("4388576018402626");
-		System.out.println(validator.example);
-		int[][] list = validator.numberCrunches;
-		for (int i = 0; i < list.length; i++) {
-			for (int j = 0; j < list[i].length; j++) {
-				System.out.printf("%2d ", list[i][j]);
-			}
-			System.out.println();
-		}
+		CardValidator1 validator = new CardValidator1("43885768");//018402626");
+		int[][] list = validator.getNumberCrunches();
+		System.out.print(validator.getExample());
 	}
 }
