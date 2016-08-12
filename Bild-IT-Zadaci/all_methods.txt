@@ -86,7 +86,9 @@ zadaci_10_08_2016
 		public static int count(String str, char a)
 	Zadatak_05
 		public static boolean isSubstring(String string, String substring)
-	
+zadaci_12_08_2016
+	Zadatak_03
+		public static int isPrime(int n)
 
 
 
