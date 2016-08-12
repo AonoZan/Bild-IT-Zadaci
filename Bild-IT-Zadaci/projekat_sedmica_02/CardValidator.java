@@ -3,10 +3,9 @@
 package projekat_sedmica_02;
 
 class CardValidator1 {
-	private String example = "Working...";
+	private String table = "Working...";
 	private boolean status = false;
 	private String cardType = null;
-	private int[][] numberCrunches;
 	public CardValidator1(String number) {
 		updateStatus(number);
 	}
@@ -14,20 +13,17 @@ class CardValidator1 {
 	public void updateStatus(String number) {
 		this.cardType = cardType(number.charAt(0), number.charAt(1));
 		this.status = checkCard(number);
-		this.example = generateExample(number);
+		this.table = generateTable(number);
 	}
 	
 	public String getExample() {
-		return example;
+		return table;
 	}
 	public boolean isStatus() {
 		return status;
 	}
 	public String getCardType() {
 		return cardType;
-	}
-	public int[][] getNumberCrunches() {
-		return numberCrunches;
 	}
 	// get card type if valid if not return null
 	private String cardType(char firstNum, char secondNum) {
@@ -38,60 +34,68 @@ class CardValidator1 {
 			return "American Express";
 		return null;
 	}
-	private String generateExample(String number) {
+	private String generateTable(String number) {
 //		StringBuilder example = new StringBuilder();
 		String example = "";
 		String lineH = "-----------------";
 		String lineW = "| | | | | | | | |";
-		boolean fliper = true;
-		for (int i = 0; i < numberCrunches.length; i++) {
-			if (fliper && numberCrunches[i] != null) {
-				if (numberCrunches[i][2] >= 10) {
-					example = " (" + numberCrunches[i][3] + " + " + numberCrunches[i][4] + " = " + numberCrunches[i][5] + ")\n" + example;
-					example = numberCrunches[i][0] + " * 2 = " + numberCrunches[i][2] + example;
-				} else {
-					example = numberCrunches[i][0] + " * 2 = " + numberCrunches[i][2] + "\n" + example;
+		for (int i = 0; i < number.length(); i+=2) {
+				int digit = Integer.parseInt(number.substring(i, i+1));
+				switch (digit) {
+					case 0:
+						example = "0 * 2 = 0\n" + example;
+						break;
+					case 1:
+						example = "1 * 2 = 2\n" + example;
+						break;
+					case 3:
+						example = "3 * 2 = 6\n" + example;
+						break;
+					case 4:
+						example = "4 * 2 = 8\n" + example;
+						break;
+					case 5:
+						example = "5 * 2 = 10 (1 + 0 = 1)\n" + example;
+						break;
+					case 6:
+						example = "6 * 2 = 12 (1 + 2 = 3)\n" + example;
+						break;
+					case 7:
+						example = "7 * 2 = 14 (1 + 4 = 5)\n" + example;
+						break;
+					case 8:
+						example = "8 * 2 = 16 (1 + 6 = 7)\n" + example;
+						break;
+					case 9:
+						example = "9 * 2 = 18 (1 + 8 = 9)\n" + example;
+						break;
+					default:
+						break;
 				}
 				example = lineW.substring(0, i) + "'" + lineH.substring(0, 16 - i) + "> " + example;
-			}
-			fliper = !fliper;
 		}
 		example = number + "\n" + example;
 		return example;// .toString();
 	}
 	private boolean checkCard(String number) {
-		this.numberCrunches = new int[16][];
 		if (number.length() <= 16) {
 			int allSingleDigits = 0, allOdd = 0;
 			boolean singleDigit = true;
 			for (int i = 0; i < number.length(); i++) {
 				int digit = Integer.parseInt(number.substring(i, i+1));
-				numberCrunches[i] = new int[6];
 				if (singleDigit) {
-					numberCrunches[i][0] = digit;
-					numberCrunches[i][1] = 2;
 					digit *= 2;
-					numberCrunches[i][2] = digit;
 					if (digit >= 10) {
-						numberCrunches[i][3] = digit / 10;
-						numberCrunches[i][4] = digit % 10;
-						numberCrunches[i][5] = numberCrunches[i][3] + numberCrunches[i][4];
-						allSingleDigits += numberCrunches[i][5];
+						allSingleDigits += (digit / 10) + (digit % 10);
 					} else {
 						allSingleDigits += digit;
 					}
 				} else {
-					numberCrunches[i][0] = digit;
 					allOdd += digit;
 				}
 				singleDigit = !singleDigit;
 			}
-			if (numberCrunches[15] == null)
-				numberCrunches[15] = new int[6];
-			numberCrunches[15][3] = allSingleDigits;
-			numberCrunches[15][4] = allOdd;
-			numberCrunches[15][5] = allSingleDigits + allOdd;
-			return numberCrunches[15][5] % 10 == 0 ? true : false;
+			return (allSingleDigits + allOdd) % 10 == 0 ? true : false;
 		}
 		return false;
 	}
@@ -99,7 +103,8 @@ class CardValidator1 {
 public class CardValidator {
 	public static void main(String[] args) {
 		CardValidator1 validator = new CardValidator1("43885768");//018402626");
-		int[][] list = validator.getNumberCrunches();
+		System.out.print(validator.getExample());
+		validator.updateStatus("45");
 		System.out.print(validator.getExample());
 	}
 }
