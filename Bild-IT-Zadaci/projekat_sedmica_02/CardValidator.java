@@ -3,7 +3,9 @@
 package projekat_sedmica_02;
 
 class CardValidator1 {
-	private String table = "Working...";
+	private String table = "Enter numbers to continue.";
+	private String calculations = "";
+	private int calc1 = 0, calc2 = 0;
 	private boolean status = false;
 	private String cardType = null;
 	public CardValidator1(String number) {
@@ -13,10 +15,12 @@ class CardValidator1 {
 	public void updateStatus(String number) {
 		this.cardType = cardType(number.charAt(0), number.charAt(1));
 		this.status = checkCard(number);
-		this.table = generateTable(number);
+		generateTable(number);
 	}
-	
-	public String getExample() {
+	public String getCalculations() {
+		return calculations;
+	}
+	public String getTable() {
 		return table;
 	}
 	public boolean isStatus() {
@@ -34,48 +38,83 @@ class CardValidator1 {
 			return "American Express";
 		return null;
 	}
-	private String generateTable(String number) {
-//		StringBuilder example = new StringBuilder();
-		String example = "";
+	private void generateTable(String number) {
+		if (number == null || number.length() == 0) {
+			this.table = "Enter numbers to continue.";
+			return;
+		}
+		String table = "";
+		String calculations1 = "";
+		String calculations2 = "";
 		String lineH = "-----------------";
 		String lineW = "| | | | | | | | |";
-		for (int i = 0; i < number.length(); i+=2) {
-				int digit = Integer.parseInt(number.substring(i, i+1));
+		boolean fliper = true;
+		for (int i = 0; i < number.length(); i++) {
+			int digit = Integer.parseInt(number.substring(i, i+1));
+			if (fliper) {
 				switch (digit) {
 					case 0:
-						example = "0 * 2 = 0\n" + example;
+						table = "0 * 2 = 0\n" + table;
+						calculations1 = calculations1 + "0";
 						break;
 					case 1:
-						example = "1 * 2 = 2\n" + example;
+						table = "1 * 2 = 2\n" + table;
+						calculations1 = calculations1 + "2";
+						break;
+					case 2:
+						table = "2 * 2 = 4\n" + table;
+						calculations1 = calculations1 + "4";
 						break;
 					case 3:
-						example = "3 * 2 = 6\n" + example;
+						table = "3 * 2 = 6\n" + table;
+						calculations1 = calculations1 + "6";
 						break;
 					case 4:
-						example = "4 * 2 = 8\n" + example;
+						table = "4 * 2 = 8\n" + table;
+						calculations1 = calculations1 + "8";
 						break;
 					case 5:
-						example = "5 * 2 = 10 (1 + 0 = 1)\n" + example;
+						table = "5 * 2 = 10 (1 + 0 = 1)\n" + table;
+						calculations1 = calculations1 + "1";
 						break;
 					case 6:
-						example = "6 * 2 = 12 (1 + 2 = 3)\n" + example;
+						table = "6 * 2 = 12 (1 + 2 = 3)\n" + table;
+						calculations1 = calculations1 + "3";
 						break;
 					case 7:
-						example = "7 * 2 = 14 (1 + 4 = 5)\n" + example;
+						table = "7 * 2 = 14 (1 + 4 = 5)\n" + table;
+						calculations1 = calculations1 + "5";
 						break;
 					case 8:
-						example = "8 * 2 = 16 (1 + 6 = 7)\n" + example;
+						table = "8 * 2 = 16 (1 + 6 = 7)\n" + table;
+						calculations1 = calculations1 + "7";
 						break;
 					case 9:
-						example = "9 * 2 = 18 (1 + 8 = 9)\n" + example;
+						table = "9 * 2 = 18 (1 + 8 = 9)\n" + table;
+						calculations1 = calculations1 + "9";
 						break;
 					default:
 						break;
 				}
-				example = lineW.substring(0, i) + "'" + lineH.substring(0, 16 - i) + "> " + example;
+				table = lineW.substring(0, i) + "'" + lineH.substring(0, 16 - i) + "> " + table;
+				if (i < number.length()-2) {
+					calculations1 = calculations1 + " + ";
+				} else {
+					calculations1 = calculations1 + " = " + this.calc1;
+				}
+			} else {
+				calculations2 = calculations2 + digit;
+				if (i < number.length()-2) {
+					calculations2 = calculations2 + " + ";
+				} else {
+					calculations2 = calculations2 + " = " + this.calc2;
+				}
+			}
+			fliper = !fliper;
 		}
-		example = number + "\n" + example;
-		return example;// .toString();
+		table = number + "\n" + table;
+		this.calculations = calculations1 + "\n" + calculations2 + "\n";
+		this.table = table;
 	}
 	private boolean checkCard(String number) {
 		if (number.length() <= 16) {
@@ -95,6 +134,8 @@ class CardValidator1 {
 				}
 				singleDigit = !singleDigit;
 			}
+			this.calc1 = allSingleDigits;
+			this.calc2 = allOdd;
 			return (allSingleDigits + allOdd) % 10 == 0 ? true : false;
 		}
 		return false;
@@ -102,9 +143,15 @@ class CardValidator1 {
 }
 public class CardValidator {
 	public static void main(String[] args) {
-		CardValidator1 validator = new CardValidator1("43885768");//018402626");
-		System.out.print(validator.getExample());
-		validator.updateStatus("45");
-		System.out.print(validator.getExample());
+		CardValidator1 validator = new CardValidator1("4388576018410707");
+		System.out.print(validator.getTable());
+		System.out.print(validator.getCalculations());
+		System.out.println(validator.getCardType());
+		System.out.println(validator.isStatus());
+		validator.updateStatus("4388576018402626");
+		System.out.print(validator.getTable());
+		System.out.print(validator.getCalculations());
+		System.out.println(validator.getCardType());
+		System.out.println(validator.isStatus());
 	}
 }
