@@ -2,17 +2,18 @@
  */
 package projekat_sedmica_02;
 
-class CardValidator1 {
+public class CardValidator {
 	private String table = "Enter numbers to continue.";
 	private String calculations = "";
 	private int calc1 = 0, calc2 = 0;
 	private boolean status = false;
 	private String cardType = null;
-	public CardValidator1(String number) {
+	public CardValidator(String number) {
 		updateStatus(number);
 	}
 	// Method that updates everything.
 	public void updateStatus(String number) {
+		if (number == null || number.length() < 2) return;
 		this.cardType = cardType(number.charAt(0), number.charAt(1));
 		this.status = checkCard(number);
 		generateTable(number);
@@ -113,6 +114,8 @@ class CardValidator1 {
 			fliper = !fliper;
 		}
 		table = number + "\n" + table;
+		calculations2 = calculations2 + " ==> " + calc1 + " + " + calc2 + " = " + (calc1 + calc2);
+		calculations2 = calculations2 + " ==> " + (calc1 + calc2) + " % 10 = " + (calc1 + calc2) % 10;
 		this.calculations = calculations1 + "\n" + calculations2 + "\n";
 		this.table = table;
 	}
@@ -141,7 +144,7 @@ class CardValidator1 {
 		return false;
 	}
 }
-public class CardValidator {
+/*public class CardValidator {
 	public static void main(String[] args) {
 		CardValidator1 validator = new CardValidator1("4388576018410707");
 		System.out.print(validator.getTable());
@@ -154,4 +157,4 @@ public class CardValidator {
 		System.out.println(validator.getCardType());
 		System.out.println(validator.isStatus());
 	}
-}
+}*/
