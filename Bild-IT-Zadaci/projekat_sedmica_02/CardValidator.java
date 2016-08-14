@@ -1,19 +1,33 @@
 /**@autor AonoZan Dejan Petrovic 2016 ©
  */
 package projekat_sedmica_02;
-
+/**
+ * <b>Card Validator</b>
+ * @author AonoZan
+ * <p>Validates credit card number and generates calculations.
+ */
 public class CardValidator {
-	private String table = "Enter numbers to continue.";
+	// String variables that will hold presentation of current card
+	private String table = "";
 	private String calculations = "";
+	// sum of values on equal and odd places of the card
 	private int calc1 = 0, calc2 = 0;
+	// status of the card (valid or not)
 	private boolean status = false;
+	// card type eg. Visa
 	private String cardType = null;
+	
 	public CardValidator(String number) {
 		updateStatus(number);
 	}
-	// Method that updates everything.
+	/**
+	 * Methiod that updates everything.
+	 * @param number Credit card number
+	 */
 	public void updateStatus(String number) {
+		// if less than two caracters in string no calculations
 		if (number == null || number.length() < 2) return;
+		// set credit card type status and generate table
 		this.cardType = cardType(number.charAt(0), number.charAt(1));
 		this.status = checkCard(number);
 		generateTable(number);
@@ -30,7 +44,12 @@ public class CardValidator {
 	public String getCardType() {
 		return cardType;
 	}
-	// get card type if valid if not return null
+	/**
+	 * Method for retriving credit card type eg. Visa.
+	 * @param firstNum
+	 * @param secondNum
+	 * @return
+	 */
 	private String cardType(char firstNum, char secondNum) {
 		if (firstNum == '4') return "Visa";				// for Visa cards
 		else if (firstNum == '5') return "Master";		// for Master Card
@@ -39,19 +58,29 @@ public class CardValidator {
 			return "American Express";
 		return null;
 	}
+	/**
+	 * Method that generates table based on current card
+	 * @param number
+	 */
 	private void generateTable(String number) {
+		// if number is empty skip
 		if (number == null || number.length() == 0) {
 			this.table = "Enter numbers to continue.";
 			return;
 		}
+		// variables for table, odd and equal calculations
 		String table = "";
 		String calculations1 = "";
 		String calculations2 = "";
+		// strings for making arrows on the table
 		String lineH = "-----------------";
 		String lineW = "| | | | | | | | |";
 		boolean fliper = true;
+		// loop over card number
 		for (int i = 0; i < number.length(); i++) {
+			// get current number
 			int digit = Integer.parseInt(number.substring(i, i+1));
+			// for equal numbers add to table and calculations appropriate string
 			if (fliper) {
 				switch (digit) {
 					case 0:
@@ -97,13 +126,17 @@ public class CardValidator {
 					default:
 						break;
 				}
+				// generate arrow
 				table = lineW.substring(0, i) + "'" + lineH.substring(0, 16 - i) + "> " + table;
+				// add plus or equal sign
 				if (i < number.length()-2) {
 					calculations1 = calculations1 + " + ";
 				} else {
 					calculations1 = calculations1 + " = " + this.calc1;
 				}
+			// for numbers on odd places
 			} else {
+				// generate calculations and add plus or equal sign
 				calculations2 = calculations2 + digit;
 				if (i < number.length()-2) {
 					calculations2 = calculations2 + " + ";
@@ -113,18 +146,31 @@ public class CardValidator {
 			}
 			fliper = !fliper;
 		}
+		// add number on top of the table
 		table = number + "\n" + table;
+		// add final calculations
 		calculations2 = calculations2 + " ==> " + calc1 + " + " + calc2 + " = " + (calc1 + calc2);
 		calculations2 = calculations2 + " ==> " + (calc1 + calc2) + " % 10 = " + (calc1 + calc2) % 10;
+		// set calculations
 		this.calculations = calculations1 + "\n" + calculations2 + "\n";
 		this.table = table;
 	}
+	/**
+	 * Method for checking if credit card number is valid or not.
+	 * @param number
+	 * @return
+	 */
 	private boolean checkCard(String number) {
+		// if number is less than 16 digits
 		if (number.length() <= 16) {
+			// variables for sum of all numbers on odd and equal places
 			int allSingleDigits = 0, allOdd = 0;
 			boolean singleDigit = true;
+			// loop trough number
 			for (int i = 0; i < number.length(); i++) {
+				// parse string into digit
 				int digit = Integer.parseInt(number.substring(i, i+1));
+				// for all equal calculate sum
 				if (singleDigit) {
 					digit *= 2;
 					if (digit >= 10) {
@@ -132,29 +178,18 @@ public class CardValidator {
 					} else {
 						allSingleDigits += digit;
 					}
+				// for all odd digits calculate sum
 				} else {
 					allOdd += digit;
 				}
 				singleDigit = !singleDigit;
 			}
+			// set values
 			this.calc1 = allSingleDigits;
 			this.calc2 = allOdd;
+			// return if card is valid or not
 			return (allSingleDigits + allOdd) % 10 == 0 ? true : false;
 		}
 		return false;
 	}
 }
-/*public class CardValidator {
-	public static void main(String[] args) {
-		CardValidator1 validator = new CardValidator1("4388576018410707");
-		System.out.print(validator.getTable());
-		System.out.print(validator.getCalculations());
-		System.out.println(validator.getCardType());
-		System.out.println(validator.isStatus());
-		validator.updateStatus("4388576018402626");
-		System.out.print(validator.getTable());
-		System.out.print(validator.getCalculations());
-		System.out.println(validator.getCardType());
-		System.out.println(validator.isStatus());
-	}
-}*/
