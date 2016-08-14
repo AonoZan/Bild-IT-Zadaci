@@ -1,6 +1,6 @@
 /**@autor AonoZan Dejan Petrovic 2016 ©
  */
-package projekat_sedmica_02;
+package projekat_sedmica_02a;
 
 import java.awt.Color;
 import java.awt.EventQueue;

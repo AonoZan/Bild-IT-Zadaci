@@ -1,6 +1,6 @@
 /**@autor AonoZan Dejan Petrovic 2016 ©
  */
-package projekat_sedmica_02;
+package projekat_sedmica_02a;
 /**
  * <b>Card Validator</b>
  * @author AonoZan
