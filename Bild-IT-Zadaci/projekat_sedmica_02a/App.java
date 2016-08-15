@@ -30,8 +30,7 @@ import javax.swing.UIManager;
 public class App {
 	private JFrame frmCheckCreditCard;
 	private JTextField textField;
-	private JLabel lblStatus;
-	private JLabel lblCalc;
+	private JLabel lblStatus, lblCalc, lblCard;
 	private FlatButton btnStatusButton, btnCheck;
 	private CardValidator validator;
 	/**
@@ -95,12 +94,13 @@ public class App {
 		
 		// text field that will hold card number
 		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);					// center teht horizontaly inside text field
-		textField.setBackground(Color.LIGHT_GRAY);									// color text field
-		textField.setBounds(10, 195, 226, 20);										// position
-		textField.setBorder(null);													// destroy border for "flat style"
+		textField.setHorizontalAlignment(SwingConstants.CENTER);				// center teht horizontaly inside text field
+		textField.setBackground(Color.LIGHT_GRAY);								// color text field
+		textField.setBounds(10, 195, 226, 20);									// position
+		textField.setBorder(null);												// destroy border for "flat style"
 		frmCheckCreditCard.getContentPane().add(textField);
 		
+		// label for table
 		lblStatus = new JLabel("Enter credit card number into text field.");	// label that will show table and default text
 		lblStatus.setFont(new Font("Lucida Console", Font.PLAIN, 11));			// console font so that table can work (every character equal length)
 		lblStatus.setVerticalAlignment(SwingConstants.TOP);						// set alignment
@@ -108,12 +108,21 @@ public class App {
 		lblStatus.setBounds(10, 11, 414, 109);									// position
 		frmCheckCreditCard.getContentPane().add(lblStatus);
 		
+		// label for calculations
 		lblCalc = new JLabel("");												// label that will contain final calculations
-		lblStatus.setFont(new Font("Lucida Console", Font.PLAIN, 11));			// console font
-		lblStatus.setVerticalAlignment(SwingConstants.TOP);						// alignment
-		lblStatus.setHorizontalAlignment(SwingConstants.LEFT);					//
+		lblCalc.setFont(new Font("Lucida Console", Font.PLAIN, 11));			// console font
+		lblCalc.setVerticalAlignment(SwingConstants.TOP);						// alignment
+		lblCalc.setHorizontalAlignment(SwingConstants.LEFT);					//
 		lblCalc.setBounds(10, 131, 414, 53);									// position
 		frmCheckCreditCard.getContentPane().add(lblCalc);
+		
+		// label for card type
+		lblCard = new JLabel("");												// label that will contain card type eg. Visa card
+		lblCard.setFont(new Font("Lucida Console", Font.PLAIN, 11));			// console font
+		lblCard.setVerticalAlignment(SwingConstants.TOP);						// alignment
+		lblCard.setHorizontalAlignment(SwingConstants.LEFT);					//
+		lblCard.setBounds(311, 11, 113, 20);									// position
+		frmCheckCreditCard.getContentPane().add(lblCard);
 		
 		btnStatusButton = new FlatButton("", Color.WHITE, Color.WHITE);			// status button for status light
 		btnStatusButton.setEnabled(false);										// set non-clickable									// 
@@ -152,6 +161,7 @@ public class App {
 				// set labels (and make it html because that only works)
 				lblStatus.setText("<html>" + validator.getTable().replace("\n", "<br/>") + "</html>");
 				lblCalc.setText("<html>" + validator.getCalculations().replace("\n", "<br/>") + "</html>");
+				lblCard.setText(validator.getCardType());
 				// set status light to appropriate light
 				if (validator.isStatus()) {
 					btnStatusButton.backgroundColor = Color.GREEN;
