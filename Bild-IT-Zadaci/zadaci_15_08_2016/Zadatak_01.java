@@ -4,10 +4,10 @@ package zadaci_15_08_2016;
 
 public class Zadatak_01 {
 	/**
-	 * Method for retriving month name from number.
+	 * Method for retrieving month name from number.
 	 * 1 is for January, 2 for February etc...
 	 * @param month
-	 * @return Month name as string eg "January",
+	 * @return Month name as string eg. "January",
 	 * Empty string "" if number is invalid.
 	 */
 	public static String getMonthName(int month) {
