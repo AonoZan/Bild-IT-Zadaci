@@ -44,10 +44,10 @@ public class Zadatak_02 {
 			break;
 		case 2: // when user plays paper
 			System.out.println("User plays paper.");
-			if (compPlay == 1) {
+			if (compPlay == 0) {
 				System.out.println("Computer plays rock.");
 				System.out.println("User won!");
-			} else if (compPlay == 2) {
+			} else if (compPlay == 1) {
 				System.out.println("Computer plays scissors.");
 				System.out.println("Computer won!");
 			} else {
@@ -61,7 +61,7 @@ public class Zadatak_02 {
 		}
 		// ask user if game should continue
 		System.out.println("Care to play again? (Y/N)");
-		return input.nextLine().toUpperCase() == "Y" ? true : false;
+		return input.nextLine().charAt(0) == 'y' ? true : false;
 	}
 	/**
 	 * Popular game rock-scissors-paper.
@@ -70,7 +70,7 @@ public class Zadatak_02 {
 	public static void main(String[] args) {
 		// constant for three computer choices rock, scissors and paper
 		final int ROCK_SCISS_PAPER = 3;
-		// variables for both user and comp choices
+		// variables for both user and computer choices
 		int userPlays = -1, compPlays = -1;
 		// variables that is true as long as games plays
 		boolean play = true;
@@ -84,10 +84,13 @@ public class Zadatak_02 {
 		// play game until "play" is true
 		do {
 			// do computer choice
-			compPlays = (int)(Math.random() + ROCK_SCISS_PAPER);
+			compPlays = (int)(Math.random() * ROCK_SCISS_PAPER);
 			// get user choice
 			System.out.println("You playing? ");
 			userPlays = input.nextInt();
+			// clear line
+			input.nextLine();
+			System.out.println(userPlays + " "+compPlays);
 			// announce who wins and get boolean for game
 			play = gamePlays(userPlays, compPlays);
 		} while (play);
