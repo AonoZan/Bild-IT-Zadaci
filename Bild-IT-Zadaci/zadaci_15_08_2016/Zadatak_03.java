@@ -18,7 +18,7 @@ public class Zadatak_03 {
 		final double INCREMENT = 2.0;
 		double sum = 0;
 		// loop in range
-		for (int i = RANGE_MIN; i < RANGE_MAX; i+=2) {
+		for (int i = RANGE_MIN; i < RANGE_MAX; i+=INCREMENT) {
 			// add to sum
 			sum += i / (i + INCREMENT);
 		}
