@@ -5,7 +5,7 @@ package zadaci_16_08_2016;
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_04 {
-	final int STARTING_YEAR = 1970;
+	final static int UTC = 2;
 	/**
 	 * Method for checking if year is leap or not.
 	 * @param year
@@ -78,17 +78,40 @@ public class Zadatak_04 {
 				month,
 				year);
 	}
+	/**
+	 * Method for retrieving current time.
+	 * @param millis
+	 * @return
+	 */
 	public static String time(long millis) {
+		// create string
 		String time = new String();
+		// convert milliseconds to second and add seconds to time
+		int seconds = (int)(millis / 1000);
+		time += seconds % 60;
+		// convert seconds to minutes and add minutes
+		int minutes = seconds / 60;
+		time = minutes % 60 + ":" + time;
+		// convert minutes to hours and add hours shifted to utc time
+		int hours = minutes / 60;
+		time = (hours % 24 + UTC) + ":" + time;
+		
 		return time;
 	}
+	/**
+	 * Method for retrieving current time and date.
+	 * @param millis
+	 * @return
+	 */
 	public static String dateAndTime(long millis) {
-		String dateAndTime = time(millis) + " " + date(millis);
-		
-		return dateAndTime;
+		return time(millis) + " " + date(millis);
 	}
+	/**
+	 * Program prints current time and date.
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		System.out.println(date(System.currentTimeMillis()));
+		System.out.println(dateAndTime(System.currentTimeMillis()));
 	}
 
 }
