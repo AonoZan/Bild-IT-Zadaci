@@ -90,7 +90,6 @@ public class Zadatak_02 {
 			userPlays = input.nextInt();
 			// clear line
 			input.nextLine();
-			System.out.println(userPlays + " "+compPlays);
 			// announce who wins and get boolean for game
 			play = gamePlays(userPlays, compPlays);
 		} while (play);
