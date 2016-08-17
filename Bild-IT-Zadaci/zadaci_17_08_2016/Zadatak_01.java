@@ -8,7 +8,10 @@ import java.util.Scanner;
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_01 {
-
+	/**
+	 * Program asks user for ASCII code and then prints character of that code.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		// prompt user to enter ascii code
