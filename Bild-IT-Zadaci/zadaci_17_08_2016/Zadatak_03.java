@@ -18,26 +18,20 @@ public class Zadatak_03 {
 		Scanner input = new Scanner(System.in);
 		// prompt user for number
 		System.out.print("Enter one 'short' digit: ");
-		System.out.println(Short.MAX_VALUE);
 		try {
 			short digit = input.nextShort();
-			// for 1st (left to right) equation is:
-			// digit % 2
-			// for 2th equation is:
-			// digit / 2 % 2 and so on go trough all 16
-			for (int i = 15; i >= 0; i--) {
-				// for negative numbers last code is 1
-				if (i == 15 && digit < 0) {
-					System.out.print(1);
-					continue;
+			System.out.print("Binary of short: ");
+			if (digit < 0) {	// for negative integers
+				System.out.println(Integer.toBinaryString(digit).substring(16, 32));
+			} else {			// for positive integers
+				// for 1st (left to right) equation is:
+				// digit % 2
+				// for 2th equation is:
+				// digit / 2 % 2 and so on go trough all 16
+				for (int i = 15; i >= 0; i--) {
+					System.out.print((digit / (int)(Math.pow(2, i))) % 2);
 				}
-				System.out.print(Math.abs((digit / (int)(Math.pow(2, i))) % 2));
-				// separate on every byte
-				if (i % 8 == 0) {
-					System.out.print(" ");
-				}
-				
-			}
+		}
 		// exit if something is wrong
 		} catch (InputMismatchException e) {
 			System.out.println("Wrong input!");
