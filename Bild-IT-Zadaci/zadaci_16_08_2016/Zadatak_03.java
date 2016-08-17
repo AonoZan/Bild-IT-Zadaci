@@ -4,7 +4,7 @@ package zadaci_16_08_2016;
 import java.util.Scanner;
 
 /**
- *  @author AonoZan Dejan Petrovic 2016 ©
+ *  @author AonoZan Dejan Petrovic 2016 ï¿½
  */
 public class Zadatak_03 {
 	/**
@@ -19,9 +19,9 @@ public class Zadatak_03 {
 		// loop trough whole number
 		for (int i = 0; i < number.length(); i++) {
 			char ch = number.charAt(i);
-			if (i == 3 || i == 6) {				// if character on 4zh place or 7th place 
-				if (ch != '-') {				// isn't -
-					return false;				// SSN is not valid
+			if (i == 3 || i == 6) {   // if character on 4th place or 7th place
+				if (ch != '-') {        // isn't -
+					return false;         // SSN is not valid
 				}
 			} else if (!Character.isDigit(ch)) {// or if character is not digit
 				return false;
@@ -38,6 +38,7 @@ public class Zadatak_03 {
 		Scanner input = new Scanner(System.in);
 		// prompt user for number
 		System.out.println("SSN format = DDD-DD-DDDD");
+		System.out.println("SSN format");
 		System.out.print("Enter SSN number: ");
 		// get number and check if it's valid
 		String ssn = input.nextLine();
@@ -47,4 +48,3 @@ public class Zadatak_03 {
 		input.close();
 	}
 }
-
