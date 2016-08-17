@@ -26,6 +26,11 @@ public class Zadatak_03 {
 			// for 2th equation is:
 			// digit / 2 % 2 and so on go trough all 16
 			for (int i = 15; i >= 0; i--) {
+				// for negative numbers last code is 1
+				if (i == 15 && digit < 0) {
+					System.out.print(1);
+					continue;
+				}
 				System.out.print(Math.abs((digit / (int)(Math.pow(2, i))) % 2));
 				// separate on every byte
 				if (i % 8 == 0) {
