@@ -48,6 +48,7 @@ public class Zadatak_04 {
 					i,
 					sumColumn(matrix, i));
 		}
+		input.close();
 	}
 
 }
