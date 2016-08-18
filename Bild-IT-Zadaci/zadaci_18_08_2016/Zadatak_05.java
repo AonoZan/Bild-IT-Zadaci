@@ -55,13 +55,21 @@ public class Zadatak_05 {
 		return sumedList;
 		
 	}
+	/**
+	 * Program asks from user for two 3x3 matrixes and then prints both
+	 * matrixes and sum of those two.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		// create matrixes
 		double[][] matrix1 = new double[3][3];
 		double[][] matrix2 = new double[3][3];
-		
+		// prompt user for matrixes
+		System.out.println("Enter two 3x3 matrixs.");
 		while (true) {
 			try {
+				// fill first matrix
 				System.out.print("Enter matrix1: ");
 				for (int i = 0; i < matrix1.length; i++) {
 					for (int j = 0; j < matrix1[i].length; j++) {
@@ -69,6 +77,7 @@ public class Zadatak_05 {
 					}
 				}
 				break;
+			// if user makes mistake clear console
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter decimal values.");
 				input.nextLine();
@@ -79,6 +88,7 @@ public class Zadatak_05 {
 		}
 		while (true) {
 			try {
+				// fill second matrix
 				System.out.print("Enter matrix2: ");
 				for (int i = 0; i < matrix2.length; i++) {
 					for (int j = 0; j < matrix2[i].length; j++) {
@@ -86,6 +96,7 @@ public class Zadatak_05 {
 					}
 				}
 				break;
+			// if error clear console
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter decimal values.");
 				input.nextLine();
@@ -94,11 +105,26 @@ public class Zadatak_05 {
 				System.exit(0);
 			}
 		}
+		// sum both matrixes into new one
 		double[][] matrixSum = addMatrix(matrix1, matrix2);
 		for (int i = 0; i < matrixSum.length; i++) {
-			for (double[] ds : matrixSum) {
-				System.out.print(ds + " ");
+			// print row of first matrix
+			for (double dn : matrix1[i]) {
+				System.out.print(dn + " ");
 			}
+			// plus sign on second row else space characters
+			System.out.print(i == 1 ? "+ " : "  ");
+			// row of second matrix
+			for (double dn : matrix2[i]) {
+				System.out.print(dn + " ");
+			}
+			// equal sign on second row else spaces
+			System.out.print(i == 1 ? "= " : "  ");
+			// row of new matrix
+			for (double dn : matrixSum[i]) {
+				System.out.print(dn + " ");
+			}
+			// new row
 			System.out.println();
 		}
 		input.close();
