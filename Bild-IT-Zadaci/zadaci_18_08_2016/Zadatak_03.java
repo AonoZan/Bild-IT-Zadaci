@@ -53,23 +53,30 @@ public class Zadatak_03 {
 						continue;
 					}
 				}
+			// in case of mistake
 			} catch (InputMismatchException e) {
 				System.out.println("Please enter number.");
 				input.nextLine();
+			// any other mistake
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				System.exit(0);
 			}
+			// create list with numbers and loop over that list
 			list = new int[listLen];
 			for (int i = 0; i < list.length; i++) {
+				// try to fill that list with user values
 				try {
 					System.out.printf("Fill index %d:", i);
 					list[i] = input.nextInt();
+				// in case mistake clean console and reset counter
 				} catch (InputMismatchException e) {
 					System.out.println("Please enter number.");
 					input.nextLine();
 					i--;
+				// exit for other mistakes
 				} catch (Exception e) {
+					System.out.println(e.getMessage());
 					System.exit(0);
 				}
 			}
