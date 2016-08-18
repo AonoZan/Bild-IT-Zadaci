@@ -1,8 +1,6 @@
 
 package projekat_sedmica_03a;
 
-import java.util.ArrayList;
-
 /**
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
@@ -14,6 +12,7 @@ public class App {
 		table.makeMove(2, 1);
 		table.makeMove(4, 1);
 		table.makeMove(7, 1);
+		table.makeMove(8, 2);
 		table.printTable();
 	}
 
@@ -39,14 +38,22 @@ class TicTacTable {
 	public TicTacTable() {
 		 refilTable();
 	}
+	/**
+	 * Method for filling place in table.
+	 * @param place
+	 * @param player
+	 */
 	public void makeMove(int place, int player) {
+		// fill place in table for player one or two
 		if (player == 1) {
 			ticPaths[(place-1)/3][(place-1)%3].setValue(player1);
 		}else if (player == 2) {
 			ticPaths[(place-1)/3][(place-1)%3].setValue(player2);
 		}
 	}
-	
+	/**
+	 * Print whole table.
+	 */
 	public void printTable() {
 		// for all rows eg. combination of 123
 		for (int i = 0; i < ticPaths.length; i++) {
@@ -62,7 +69,7 @@ class TicTacTable {
 	 * 1 2 3
 	 * 4 5 6
 	 * 7 8 9
-	 * Player 1 wins if he fills for example 123 places.
+	 * Player 1 wins if he fills for example 1,2 and 3 place.
 	 * This method constructs all possible combination
 	 * that player can fill to win.
 	 */
@@ -73,6 +80,7 @@ class TicTacTable {
 				ticPaths[i][j] = new Place();
 			}
 		}
+
 		// copy places into vertical combinations
 		for (int i = 3; i < 6; i++) {
 			for (int j = 0; j < ticPaths[0].length; j++) {
@@ -87,10 +95,15 @@ class TicTacTable {
 	}
 	
 }
+/**
+ * Basic class for storing place from table and easy access and change.
+ * @author AonoZan
+ *
+ */
 class Place {
 	String value;
 	public Place() {
-		this(null);
+		this("_");
 	}
 	public Place(String value) {
 		this.value = value;
