@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *  @author AonoZan Dejan Petrovic 2016 ©
+ *  @author AonoZan Dejan Petrovic 2016 Â©
  */
 public class Zadatak_02 {
 	/**
