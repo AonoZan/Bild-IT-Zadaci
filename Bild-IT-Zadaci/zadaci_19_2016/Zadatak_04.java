@@ -43,7 +43,12 @@ public class Zadatak_04 {
 			}
 		}
 	}
+	/**
+	 * Program sorts list of integer type.
+	 * @param args
+	 */
 	public static void main(String[] args) {
+		// create list
 		int[][] list = new int[][]{
 			{4, 2},
 			{1, 7},
@@ -52,6 +57,7 @@ public class Zadatak_04 {
 			{1, 1},
 			{4, 1}
 		};
+		// sort and print
 		sort(list);
 		Zadatak_03.printList(list);
 	}
