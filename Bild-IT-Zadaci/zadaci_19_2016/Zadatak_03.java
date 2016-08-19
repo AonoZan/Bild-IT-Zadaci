@@ -5,7 +5,7 @@ package zadaci_19_2016;
  */
 public class Zadatak_03 {
 	/**
-	 * Mrthod for filling matrix with values.
+	 * Method for filling matrix with values.
 	 * @param list
 	 * @return
 	 */
@@ -19,11 +19,19 @@ public class Zadatak_03 {
 			}
 		}
 	}
+	/**
+	 * Method prints list of elements.
+	 * @param list
+	 */
 	public static void printList(int[] list) {
 		for (int i : list) {
 			System.out.print(i + " ");
 		}
 	}
+	/**
+	 * Method prints 2D list.
+	 * @param list
+	 */
 	public static void printList(int[][] list) {
 		for (int[] is : list) {
 			printList(is);
@@ -31,40 +39,56 @@ public class Zadatak_03 {
 		}
 	}
 	/**
-	 * Methos sums list of integers.
+	 * MethoD sums list of integers.
 	 * @param list
 	 * @return
 	 */
 	public static int sum(int[] list) {
-		// if 
+		// if wrong argument return 0
 		if (list == null) return 0;
+		// go trough list elements and add to sum values
 		int sum = 0;
 		for (int i : list) {
 			sum += i;
 		}
+		// return sum
 		return sum;
 	}
+	/**
+	 * Method for finding greatest element in list.
+	 * @param list
+	 * @return
+	 */
 	public static int[] greatestElement(int[][] list) {
+		// for bad argument return null
 		if (list == null) return null;
-		int row = 0, col = 0;
-		int rowSum = 0, colSum = 0;
-		int tmp = 0;
+		int row = 0, col = 0;		// variables for each index
+		int rowSum = 0, colSum = 0;	// variables for sum of rows and columns
+		int tmp = 0;				// temporary variable for sum
+		// temporary list of column values
 		int[] tmpCol = new int[list.length];
+		// go trough list
 		for (int i = 0; i < list.length; i++) {
+			// get sum of row elements
 			tmp = sum(list[i]);
+			// if sum of row is bigger update index and biggest sum
 			if (tmp > rowSum) {
 				rowSum = tmp;
 				row = i;
 			}
+			// fill column elements in to temp list
 			for (int j = 0; j < tmpCol.length; j++) {
 				tmpCol[j] = list[j][i];
 			}
+			// get sum of column elements
 			tmp = sum(tmpCol);
+			// if sum of column is greater update index and greatest sum
 			if (tmp > colSum) {
 				colSum = tmp;
 				col = i;
 			}
 		}
+		// return list of row and column indexes
 		return new int[]{row, col};
 	}
 	/**
