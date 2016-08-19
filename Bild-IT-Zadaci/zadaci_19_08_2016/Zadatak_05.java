@@ -1,11 +1,11 @@
 
 package zadaci_19_2016;
 /**
- *  @author AonoZan Dejan Petrovic 2016 ©
+ *  @author AonoZan Dejan Petrovic 2016 Â©
  */
 public class Zadatak_05 {
 	/**
-	 * MEthod for checking if all rows and columns have same sum of values.
+	 * Method for checking if all rows and columns have same sum of values.
 	 * @param list
 	 * @return
 	 */
