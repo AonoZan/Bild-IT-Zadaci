@@ -1,7 +1,7 @@
 
 package zadaci_19_2016;
 /**
- *  @author AonoZan Dejan Petrovic 2016 ©
+ *  @author AonoZan Dejan Petrovic 2016 Â©
  */
 public class Zadatak_04 {
 	// method for returning sum of all elements in list
