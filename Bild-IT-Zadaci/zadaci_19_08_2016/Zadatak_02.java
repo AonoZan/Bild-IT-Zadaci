@@ -1,5 +1,5 @@
 
-package zadaci_19_2016;
+package zadaci_19_08_2016;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
