@@ -38,7 +38,6 @@ public class Zadatak_03 {
 		Scanner input = new Scanner(System.in);
 		// prompt user for number
 		System.out.println("SSN format = DDD-DD-DDDD");
-		System.out.println("SSN format");
 		System.out.print("Enter SSN number: ");
 		// get number and check if it's valid
 		String ssn = input.nextLine();
