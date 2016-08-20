@@ -92,7 +92,7 @@ public class Zadatak_05 {
 		// reference to the largest from list
 		Location loc = locateLargest(matrix);
 		System.out.printf("The location of the largest"
-				+ "element is %.2f at (%d, %d)\n",
+				+ " element is %.2f at (%d, %d)\n",
 				loc.maxValue,
 				loc.row,
 				loc.column);
