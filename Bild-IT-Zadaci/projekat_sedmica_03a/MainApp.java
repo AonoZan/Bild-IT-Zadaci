@@ -19,7 +19,9 @@ import javafx.util.Duration;
 public class MainApp extends Application{
 	private Stage primaryStage;
     private AnchorPane rootLayout;
+    private AnchorPane endLayout;
     private Scene scene;
+    private Scene endScene;
     private String[] tableList = {
 			"Images\\Table_01.png",
 			"Images\\Table_02.png",
@@ -67,6 +69,43 @@ public class MainApp extends Application{
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Game: Tic Tac Toe");
         initRootLayout();
+        initEndLayout();
+    }
+	public void retart() {
+		this.ticPaths = new Place[8][3];
+//		this.turns = false;
+		refilTable();
+		changeBackground();
+		for (int i = 1; i <= 9; i++) {
+			ImageView place = (ImageView) scene.lookup("#place" + i);
+			Image img = place.getImage();
+			if (img != null) img = null;
+			place.setImage(null);
+			System.gc();
+		}
+	}
+	public void changeScene(String arg) {
+		if (arg == "game over") {
+			primaryStage.setScene(endScene);
+		} else if (arg == "main") {
+			primaryStage.setScene(scene);
+		}
+	}
+	public void initEndLayout() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("EndLayout.fxml"));
+            endLayout = (AnchorPane) loader.load();
+            
+            // Show the scene containing the root layout.
+            endScene = new Scene(endLayout);
+            
+            EndLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 	/**
      * Initializes the root layout.
@@ -93,6 +132,7 @@ public class MainApp extends Application{
             e.printStackTrace();
         }
     }
+    
     private Image getRandom(String[] pathList) {
 		int rndIndex = (int)(Math.random() * pathList.length);
 		Image img = new Image(RootLayoutController.class.getResourceAsStream(pathList[rndIndex]));
@@ -150,7 +190,18 @@ public class MainApp extends Application{
     		System.out.println("Already made move.");
     	}
 		printTable();
-		System.out.println(getWinner());
+		String winner = getWinner();
+		if (winner != null) {
+			changeScene("game over");
+			ImageView notification = (ImageView) endScene.lookup("#notification");
+			if (winner == "Draw") {
+				System.out.println("Draw");
+			} else if (winner == player1) {
+				notification.setImage(getRandom(player1Won));
+			} else if (winner == player2) {
+				notification.setImage(getRandom(player2Won));
+			}
+		}
 	}
 	private String getWinner() {
 		int counter = 0;
@@ -218,6 +269,11 @@ public class MainApp extends Application{
     
 	public void changeBackground() {
 		ImageView table = (ImageView) scene.lookup("#table");
+		
+		Image img = table.getImage();
+		if (img != null) img = null;
+		table.setImage(null);
+		System.gc();
 		table.setImage(getRandom(tableList));
 	}
 	
