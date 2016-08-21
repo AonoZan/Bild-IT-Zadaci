@@ -31,6 +31,8 @@ public class RootLayoutController {
 	
 	@FXML
 	private ImageView table;
+	@FXML
+	private ImageView notification;
 	
 	@FXML
 	private void changeBackground() {

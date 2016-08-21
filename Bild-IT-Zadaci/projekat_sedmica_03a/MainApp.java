@@ -3,6 +3,7 @@ package projekat_sedmica_03a;
 
 import java.io.IOException;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *  @author AonoZan Dejan Petrovic 2016 ©
@@ -41,7 +43,18 @@ public class MainApp extends Application{
 			"Images\\Player2_05.png",
 			"Images\\Player2_06.png"
 	};
-    
+    private String[] player1Move = {
+    		"Images\\Player1Move.png"
+    };
+    private String[] player2Move = {
+    		"Images\\Player2Move.png"
+    };
+    private String[] player1Won = {
+    		"Images\\Player1Won.png"
+    };
+    private String[] player2Won = {
+    		"Images\\Player2Won.png"
+    };
 	private String player1 = "X";
 	private String player2 = "O";
 	private Place[][] ticPaths = new Place[8][3];
@@ -74,6 +87,8 @@ public class MainApp extends Application{
             
             RootLayoutController controller = loader.getController();
             controller.setMainApp(this);
+            
+            showNotification(player1Move, 5000);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,6 +122,12 @@ public class MainApp extends Application{
 			System.out.println();
 		}
 	}
+	public void printList(int[] list) {
+		for (int i : list) {
+			System.out.println(i + " ");
+		}
+		System.out.println();
+	}
     /**
 	 * Method for filling place in table.
 	 * @param place
@@ -119,14 +140,47 @@ public class MainApp extends Application{
     		if (player == 1) {
 				img.setImage(getRandom(player1List));
 				ticPaths[(place-1)/3][(place-1)%3].setValue(player1);
+				showNotification(player2Move, 2000);
 			} else if (player == 2) {
 				img.setImage(getRandom(player2List));
 				ticPaths[(place-1)/3][(place-1)%3].setValue(player2);
+				showNotification(player1Move, 2000);
 			}
     	} else {
     		System.out.println("Already made move.");
     	}
 		printTable();
+		System.out.println(getWinner());
+	}
+	private String getWinner() {
+		int counter = 0;
+		for (Place[] places : ticPaths) {
+			int p1 = 0;
+			int p2 = 0;
+			for (Place place : places) {
+				if (place.getValue() == player1) {
+					p1++;
+					counter++;
+				} else if (place.getValue() == player2) {
+					p2++;
+					counter++;
+				}
+				if (p1 == 3) return player1;
+				else if (p2 == 3) return player2;
+			}
+		}
+		if (counter == 24) return "Draw";
+		return null;
+	}
+	private void showNotification(String[] list, int duration) {
+		ImageView notification = (ImageView) scene.lookup("#notification");
+		notification.setImage(getRandom(list));
+		FadeTransition ft = new FadeTransition(Duration.millis(duration),
+				notification);
+	     ft.setFromValue(1.0);
+	     ft.setToValue(0.0);
+	 
+	     ft.play();
 	}
 	/**
 	 * Construct table of combinations.
@@ -145,7 +199,6 @@ public class MainApp extends Application{
 				ticPaths[i][j] = new Place();
 			}
 		}
-
 		// copy places into vertical combinations
 		for (int i = 3; i < 6; i++) {
 			for (int j = 0; j < ticPaths[0].length; j++) {
@@ -169,11 +222,7 @@ public class MainApp extends Application{
 	}
 	
 	public static void main(String[] args) {
-
         launch(args);
     }
-
-
-
 }
 

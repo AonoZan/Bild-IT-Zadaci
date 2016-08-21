@@ -32,6 +32,11 @@
             <ImageView fx:id="place9" fitHeight="110.0" fitWidth="110.0" layoutX="254.0" layoutY="255.0" onMouseClicked="#handleField9" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="place8" fitHeight="110.0" fitWidth="110.0" layoutX="145.0" layoutY="255.0" onMouseClicked="#handleField8" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="place7" fitHeight="110.0" fitWidth="110.0" layoutX="34.0" layoutY="255.0" onMouseClicked="#handleField7" pickOnBounds="true" preserveRatio="true" />
+            <Pane layoutX="34.0" layoutY="70.0" mouseTransparent="true" prefHeight="256.0" prefWidth="330.0">
+               <children>
+                  <ImageView fx:id="notification" fitHeight="256.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
          </children></Pane>
    </children>
 </AnchorPane>
