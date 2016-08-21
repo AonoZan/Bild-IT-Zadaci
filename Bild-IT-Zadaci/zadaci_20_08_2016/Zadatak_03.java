@@ -68,11 +68,12 @@ class Stopwatch {
 	private long endTime;
 	// basic constructor initiate start time
 	public Stopwatch() {
-		this.startTime = System.currentTimeMillis();
+		start();
 	}
 	// to start time
 	public void start() {
 		this.startTime = System.currentTimeMillis();
+		this.endTime = System.currentTimeMillis();
 	}
 	// to stop time
 	public void stop() {
