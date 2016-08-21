@@ -53,9 +53,7 @@ public class Zadatak_03 {
 		
 		// print elapsed time
 		System.out.println("Elapsed time " + (stopwatch.getElapsedTime() / 1000) + " seconds.");
-		 
 	}
-
 }
 /**
  * Simple stopwatch class. Call start() and stop() to start and stop time.
