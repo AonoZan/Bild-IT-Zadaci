@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
  */
 public class RootLayoutController {
 	private MainApp mainApp;
-	
+	// reference fields for places on table
 	@FXML
 	private ImageView place1;
 	@FXML
@@ -34,11 +34,7 @@ public class RootLayoutController {
 	@FXML
 	private ImageView notification;
 	
-	@FXML
-	private void changeBackground() {
-		mainApp.changeBackground();
-	}
-	
+	// actions for each place on table
 	@FXML
 	private void handleField1() {
 		mainApp.makeMove(1);

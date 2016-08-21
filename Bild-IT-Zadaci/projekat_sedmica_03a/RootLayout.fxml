@@ -14,7 +14,7 @@
                   <Image url="@Images/Background.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="table" fitHeight="400.0" fitWidth="400.0" onMouseClicked="#changeBackground" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="table" fitHeight="400.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Table_01.png" />
                </image>
