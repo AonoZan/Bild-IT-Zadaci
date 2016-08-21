@@ -52,7 +52,7 @@ public class Zadatak_03 {
 		stopwatch.stop();
 		
 		// print elapsed time
-		System.out.println(stopwatch.getElapsedTime());
+		System.out.println("Elapsed time " + (stopwatch.getElapsedTime() / 1000) + " seconds.");
 		 
 	}
 
@@ -81,7 +81,7 @@ class Stopwatch {
 	}
 	// return time elapsed in seconds
 	public long getElapsedTime() {
-		return (this.endTime - this.startTime) / 1000;
+		return this.endTime - this.startTime;
 	}
 	
 }
