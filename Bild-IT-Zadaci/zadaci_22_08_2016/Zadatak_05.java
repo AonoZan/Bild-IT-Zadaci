@@ -12,6 +12,7 @@ public class Zadatak_05 {
 	 * Program asks for 4 points on 2D plane.
 	 * Four points represent two lines and
 	 * program prints result if those two lines intersect.
+	 * @see <a href="http://www.mathopenref.com/coordintersection.html">Test intersecting points</a>
 	 * @param args
 	 */
 	public static void main(String[] args) {
