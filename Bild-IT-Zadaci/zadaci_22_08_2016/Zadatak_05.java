@@ -50,6 +50,18 @@ public class Zadatak_05 {
 		double x4 = loc[6];
 		double y4 = loc[7];
 		
+		/* other primer using Linear equation
+		double a = y1 - y2;
+		double b = x2 - x1;
+		double c = y3 - y4;
+		double d = x4 - x3;
+		double e = (y1 - y2) * x1 - ((x1 - x2) * y1);
+		double f = (y3 - y4) * x3 - ((x3 - x4) * y3);
+		
+		double x = (e * d - b * f) / (a * d - b * c);
+		double y = (a * f - e * c) / (a * d - b * c);
+		 */
+		
 		double x, y;
 		// calculate divider
 		double d = (x1-x2)*(y3-y4) - (y1-y2)*(x3-x4);
