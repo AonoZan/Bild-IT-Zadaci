@@ -73,6 +73,7 @@ class QuadraticEquation {
 	private double c;
 	// constructor that sets all three values
 	public QuadraticEquation(double a, double b, double c) {
+		super();
 		this.a = a;
 		this.b = b;
 		this.c = c;
