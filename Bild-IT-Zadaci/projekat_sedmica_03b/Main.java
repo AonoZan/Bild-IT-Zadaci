@@ -80,7 +80,7 @@ public class Main {
 		// print table after game finishes
 		System.out.println("\n\n\n\n\n\n\n\n\n\n");
 		game.printTable();
-		// and print status of who won the game
+		// and print status of who wins the game
 		System.out.println("Game over.");
 		if (winner == 'X') {
 			System.out.println("It's a draw!");
