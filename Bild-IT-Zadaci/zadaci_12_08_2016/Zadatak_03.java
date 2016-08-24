@@ -4,7 +4,10 @@ package zadaci_12_08_2016;
 
 public class Zadatak_03 {
 	/**
-	 * Method checks if number is prime or not and returns boolean value.
+	 * Method checks if number is prime or not
+	 * and returns that value if it's prime value.
+	 * If number is not prime 0 is returned.
+	 * 
 	 * @see <a href="https://www.mkyong.com/java/how-to-determine-a-prime-number-in-java/">How to determine prime number</a>
 	 */
 	//checks whether an int is prime or not.
