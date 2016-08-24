@@ -8,7 +8,7 @@ import java.util.Scanner;
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_04 {
-	/**Program makes list of all primes less than 120 and prints in reverse*/
+	/**Program makes list factors for user number and prints in reverse*/
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		// create list and variable to store number
