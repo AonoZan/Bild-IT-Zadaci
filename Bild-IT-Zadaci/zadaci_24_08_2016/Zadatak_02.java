@@ -12,7 +12,7 @@ public class Zadatak_02 {
 	 * Square number is number in format n¡2.
 	 * 
 	 * @see <a href="https://github.com/LuizGsa21/intro-to-java-10th-edition/tree/master/src">
-	 * See this guy repositoy which helped me with BigDecimal</a>
+	 * See this guy repository which helped me with BigDecimal</a>
 	 */
 	public static void main(String[] args) {
 		// maximum long value, searching for anything above
