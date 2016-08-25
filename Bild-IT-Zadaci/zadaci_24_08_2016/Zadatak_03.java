@@ -27,11 +27,13 @@ public class Zadatak_03 {
 		int counter = 0;//*****
 		// start from 
 		BigDecimal start = new BigDecimal(3);
+		// loop until multiple of divider is less or equal than number
 		while (start.multiply(start).compareTo(n) <= 0) {
+			// if number is divisible with divider it's not prime
 			if (n.remainder(start).compareTo(BigDecimal.ZERO) == 0) {
 				return false;
 			}
-			start = start.add(new BigDecimal(2));
+			// set divider to next odd number
 			if (counter % 100000 == 0) {//*****
 				System.out.print(".");//*****
 				counter = 0;//*****
