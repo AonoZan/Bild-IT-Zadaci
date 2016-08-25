@@ -49,7 +49,7 @@ public class Zadatak_04 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// create mercenne variable and loop to 100 iterations
+		// create mersenne variable and loop to 100 iterations
 		BigDecimal mersenne;
 		for (int i = 2; i <= 100; i++) {
 			// check if iteration is prime
