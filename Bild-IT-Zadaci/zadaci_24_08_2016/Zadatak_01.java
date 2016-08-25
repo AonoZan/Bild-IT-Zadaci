@@ -12,7 +12,7 @@ public class Zadatak_01 {
 		// find numbers until 10 is found
 		while (counter < 10) {
 			// if number is divisible by 3 and 2 print it and count it
-			if (number % 2 == 0 || number %3 == 0) {
+			if (number % 2 == 0 || number % 3 == 0) {
 				System.out.printf("0.%050d\n", number);
 				counter++;
 			}
