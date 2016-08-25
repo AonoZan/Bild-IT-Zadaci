@@ -27,7 +27,7 @@ public class Zadatak_03 {
 	 */
 	public static void main(String[] args) {
 		System.out.print("All primes form 0 to 100.000:\n");
-		for (int i = 0, counter = 0; i < 100000; i++) {
+		for (int i = 0, counter = 0; i < 100; i++) {
 			if (isPrime(i) != 0) {
 				System.out.print(i + " ");
 				counter++;
