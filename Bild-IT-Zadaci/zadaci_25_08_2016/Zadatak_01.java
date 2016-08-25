@@ -6,6 +6,8 @@ package zadaci_25_08_2016;
 public class Zadatak_01 {
 	
 	public static void main(String[] args) {
+		MyString1 string = new MyString1("test string");
+		System.out.println(string);
 	}
 
 }
@@ -52,8 +54,16 @@ class MyString1 {
 		}
 		return new MyString1(values);
 	}
-	public MyString1 toLowerCase();
-	public boolean equals(MyString1 s);
-	public static MyString1 valueOf(int i);
+//	public MyString1 toLowerCase();
+//	public boolean equals(MyString1 s);
+//	public static MyString1 valueOf(int i);
+	public String toString() {
+		StringBuffer str = new StringBuffer();
+		for (char c : value) {
+			str.append(c);
+		}
+		return str.toString();
+		
+	}
 	
 }
