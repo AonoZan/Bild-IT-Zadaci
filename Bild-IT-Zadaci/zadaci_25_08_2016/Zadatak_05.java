@@ -45,7 +45,7 @@ public class Zadatak_05 {
  *
  */
 class MyStringBuilder1 {
-	// store calues and length of string
+	// store values and length of string
 	private String[] list;
 	private int length;
 	
@@ -94,7 +94,7 @@ class MyStringBuilder1 {
 	public MyStringBuilder1 append(int i) {
 		return append(new MyStringBuilder1(i + ""));
 	}
-	/**Method for retriving character at some index.*/
+	/**Method for retrieving character at some index.*/
 	public char charAt(int index) {
 		// check if argument is negative and retrieve 0 if yes
 		if (index < 0) {
@@ -118,7 +118,7 @@ class MyStringBuilder1 {
 		}
 		return 0;
 	}
-	/**Method retrives new string but with lower case.*/
+	/**Method retrieves new string but with lower case.*/
 	public MyStringBuilder1 toLowerCase() {
 		// create new list and buffer
 		String[] newList = new String[this.list.length];
@@ -138,7 +138,7 @@ class MyStringBuilder1 {
 	}
 	/**Method returns new substring.*/
 	public MyStringBuilder1 substring(int begin, int end) {
-		// end is length grom begin index
+		// end is length from begin index
 		end -= begin;
 		// create buffer and loop over list of strings
 		StringBuffer buffer = new StringBuffer();
