@@ -6,29 +6,35 @@ package zadaci_25_08_2016;
 public class Zadatak_05 {
 	/**Program tests MyStringBuilder1 class.*/
 	public static void main(String[] args) {
-		String s1 = "1234";
-		String s2 = "567890";
+		String s1 = "Simple string";
+		String s2 = "Another one";
 		MyStringBuilder1 str = new MyStringBuilder1(s1);
 		MyStringBuilder1 str2 = new MyStringBuilder1(s2);
+		System.out.printf("For strings \"%s\" and \"%s\"...\n\n", s1, s2);
+		
+		System.out.print("Append strings: ");
 		str = str.append(str2);
 		for (int i = 0; i < str.length(); i++) {
 			System.out.print(str.charAt(i));
 		}
 		System.out.println();
+		
+		System.out.print("Make lower case: ");
 		str2 = str.toLowerCase();
 		for (int i = 0; i < str2.length(); i++) {
 			System.out.print(str2.charAt(i));
 		}
 		System.out.println();
 
+		System.out.print("Custom substring(2, 6): ");
 		str2 = str.substring(2, 6);
-//		str2 = str.substring(4, 8);
 		for (int i = 0; i < str2.length(); i++) {
 			System.out.print(str2.charAt(i));
 		}
 		System.out.println();
+		
+		System.out.print("System substring: ");
 		System.out.println((s1+s2).substring(2, 6));
-//		System.out.println((s1+s2).substring(4, 8));
 		
 	}
 }
@@ -112,25 +118,42 @@ class MyStringBuilder1 {
 		}
 		return 0;
 	}
+	/**Method retrives new string but with lower case.*/
 	public MyStringBuilder1 toLowerCase() {
+		// create new list and buffer
 		String[] newList = new String[this.list.length];
 		StringBuffer buffer = new StringBuffer();
+		// loop over old list
 		for (int i = 0; i < newList.length; i++) {
+			// reset buffer and loop over item in list
 			buffer.setLength(0);
 			for (char c : this.list[i].toCharArray()) {
+				// add every character to the buffer but with lower case
 				buffer.append(Character.toLowerCase(c));
 			}
+			// add buffer to the new list
 			newList[i] = buffer.toString();
 		}
 		return new MyStringBuilder1(newList);
 	}
+	/**Method returns new substring.*/
 	public MyStringBuilder1 substring(int begin, int end) {
+		// end is length grom begin index
 		end -= begin;
+		// create buffer and loop over list of strings
 		StringBuffer buffer = new StringBuffer();
 		for (String string : list) {
+			// if still not at begin index of the list
 			if (begin > 0) {
+				// pass this string begin is bigger subtract length to carry on
 				if (begin >= string.length()) {
 					begin -= string.length();
+				// if substring can be extracted append to buffer and reset both begin and end
+				} else if (begin + end <= string.length()) {
+					buffer.append(string.substring(begin, begin + end));
+					begin = 0;
+					end = 0;
+				// if it's not add substring to buffer
 				} else {
 					buffer.append(string.substring(begin, string.length()));
 					end -= end - begin;
@@ -138,10 +161,13 @@ class MyStringBuilder1 {
 				}
 				continue;
 			}
+			// if still need to add strings
 			if (end > 0) {
+				// add whole string if end is greater than string length
 				if (end >= string.length()) {
 					buffer.append(string);
 					end -= string.length();
+				// or add substring
 				} else {
 					buffer.append(string.substring(0, end));
 					end = 0;
