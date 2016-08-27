@@ -20,17 +20,6 @@ public class Zadatak_04 {
 		}
 		return false;
 	}
-	//  0 0 0 1 1 2 2 3 0
-	// .001122300 -0 +0
-	// .01122300  -0
-	// .1122300   -0
-	// .1223001   -1 +1
-	// .223001    -1
-	// .230012    -2 +2
-	// .30012     -2
-	// .00123     -3 +3
-	// .
-	// 5 0 0 0 0 4 2 1 5 
 	/**Method removes all duplicated items from list.*/
 	public static void removeDuplicate(ArrayList<Integer> list) {
 		// create list to store all unique numbers
