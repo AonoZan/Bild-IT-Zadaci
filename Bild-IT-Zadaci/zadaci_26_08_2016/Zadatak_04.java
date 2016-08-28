@@ -26,7 +26,7 @@ public class Zadatak_04 {
 		list.add(circle);
 		// loop trough whole list and print output using toString() of objects
 		for (Object object : list) {
-			System.out.println(object.toString());
+			System.out.println(object);
 		}
 	}
 }
