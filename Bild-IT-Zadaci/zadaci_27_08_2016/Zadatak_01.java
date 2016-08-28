@@ -1,6 +1,7 @@
 
 package zadaci_27_08_2016;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -46,20 +47,26 @@ public class Zadatak_01 {
 		}
 	}
 	/**Method for finding row with max sum of elements.*/
-	public static int maxRow(int[][] list) {
+	public static void maxRow(int[][] list, ArrayList<Integer> row) {
 		// create max sum and set to first row by default
 		int max = sum(list[0]);
 		// loop for each row
-		for (int[] is : list) {
+		for (int i = 0; i < list.length; i++) {
 			// get row sum 
-			int sum = sum(is);
-			// update max if other row in list is greater
-			if (sum > max) max =  sum;
+			int sum = sum(list[i]);
+			// update max and list if other row in list is greater
+			if (sum > max) {
+				max = sum;
+				row.clear();
+				row.add(i);
+			} else if (sum == max) {
+				// if it's equal just add to list
+				row.add(i);
+			}
 		}
-		return max;
 	}
 	/**Method for finding column with max sum of elements.*/
-	public static int maxCol(int[][] list) {
+	public static void maxCol(int[][] list, ArrayList<Integer> col) {
 		// create list for storing column as list
 		int[] column = new int[list.length];
 		// create max and boolean indicating that max is not yet set
@@ -75,13 +82,19 @@ public class Zadatak_01 {
 			int sum = sum(column);
 			// if max is not yet set and set it
 			// else check if sum is greater and update sum if yes
+			// or just add column indices 
 			if (notSet) {
 				max = sum;
-			} else if (sum > max) {
+				notSet = false;
+				col.add(i);
+			}else if (sum > max) {
 				max = sum;
+				col.clear();
+				col.add(i);
+			} else if (sum == max) {
+				col.add(i);
 			}
 		}
-		return max;
 	}
 	/**Program asks user for size of matrix and prints greatest row and column found.*/
 	public static void main(String[] args) {
@@ -107,9 +120,15 @@ public class Zadatak_01 {
 		matrix = new int[size][size];
 		fillMatrix(matrix);
 		print(matrix);
-		// print greatest row and column
-		System.out.println("Max row is: " + maxRow(matrix));
-		System.out.println("Max column is: " + maxCol(matrix));
+		// create row and column lists
+		ArrayList<Integer> row = new ArrayList<>();
+		ArrayList<Integer> col = new ArrayList<>();
+		// get max indices
+		maxRow(matrix, row);
+		maxCol(matrix, col);
+		// print greatest row and column indices
+		System.out.println("Max rows is: " + row);
+		System.out.println("Max columns is: " + col);
 		
 		input.close();
 	}
