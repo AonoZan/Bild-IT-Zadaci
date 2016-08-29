@@ -13,7 +13,7 @@ public class App {
 	
 	/**Method serves as new frame, prints bunch of new lines.*/
 	private static void newFrame() {
-		System.out.println("\n\n\n\n\n\n\n\n\n");
+		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
 	/**Method renders status of the game. (picture, word, lives...)*/
 	private static void renderFrame() {
@@ -31,7 +31,7 @@ public class App {
 		System.out.println("Let's play game called battleship.");
 		System.out.println("Computer and player place their ships on to battlefield.");
 		System.out.println("Player and coumputer then each take turns\nand fire cannons on map fields.");
-		System.out.println("On map fields marked with:");
+		System.out.println("On map, fields marked with:");
 		System.out.println("\t\"O\" are places where player or computer missed");
 		System.out.println("\t\"X\" where player or computer hit opponent ship\n");
 		System.out.println("Press enter to continue...");
@@ -72,6 +72,7 @@ public class App {
 			System.out.println("Place ship no. " + i);
 			System.out.println("You place ships on right side.");
 			System.out.println("You can place on every available row.");
+			System.out.println("Correct place would be 0B or 12V for example...");
 			System.out.printf("You can't place on column which is\nnot in range %c to %c.\n",
 					rangeFrom, rangeTo
 					);
