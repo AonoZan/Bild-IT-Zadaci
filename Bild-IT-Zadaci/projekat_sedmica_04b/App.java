@@ -15,8 +15,8 @@ public class App {
 	private static void newFrame() {
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	}
-	/**Method renders status of the game. (picture, word, lives...)*/
-	private static void renderFrame() {
+	/**Method renders status of the game. (map...)*/
+	private static void renderMap() {
 		// render battlefield map
 		System.out.println(game.getMap(game.getWholeMap()));
 	}
@@ -68,7 +68,7 @@ public class App {
 		// ask player to place 3 ships
 		for (int i = 1; i <= 3; i++) {
 			newFrame();
-			renderFrame();
+			renderMap();
 			System.out.println("Place ship no. " + i);
 			System.out.println("You place ships on right side.");
 			System.out.println("You can place on every available row.");
@@ -94,14 +94,14 @@ public class App {
 		while (!game.gameOver()) {
 			// new frame and render frame
 			newFrame();
-			renderFrame();
+			renderMap();
 			// prompt for user for field to fire at and try to fire
 			System.out.print("Enter field to fire at: ");
 			field = input.nextLine();
 			fired = game.fire(1, field);
 			// if couldn't fire at that place loop until finally correctly fired
 			while (!fired) {
-				System.out.print("Sorry thets not valid move.\nTry again: ");
+				System.out.print("Sorry thats not valid move.\nTry again: ");
 				field = input.nextLine();
 				fired = game.fire(1, field);
 			}
@@ -111,7 +111,7 @@ public class App {
 		}
 		// print newFrame and render frame
 		newFrame();
-		renderFrame();
+		renderMap();
 		// get winner of the game and print it
 		String winner = game.winner();
 		System.out.println("Game over! Winner is " + winner);
