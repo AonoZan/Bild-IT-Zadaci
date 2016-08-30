@@ -8,7 +8,7 @@ import java.util.Scanner;
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_03 {
-
+	/**Program asks simple mathematical question.*/
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		// create two random numbers
