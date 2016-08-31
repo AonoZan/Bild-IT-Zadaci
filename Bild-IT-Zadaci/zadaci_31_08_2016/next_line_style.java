@@ -1,9 +1,6 @@
-package zadaci_31_08_2016;
-
-public class next_line_style
+class
 {
-public static void main(String[] args)
+function
 {
-// Some statements
 }
 }
