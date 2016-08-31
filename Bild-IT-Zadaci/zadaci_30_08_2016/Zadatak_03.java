@@ -3,33 +3,40 @@ package zadaci_30_08_2016;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_03 {
-	/** Method reformats java source code. */
-	public static String formatSC(String sourceCode) {
-		// convert from next-line style to end-line style format
-		sourceCode = sourceCode.replace("\n{", " {");
-		sourceCode = sourceCode.replace("\n\t{", " {");
-		sourceCode = sourceCode.replace("\n {", " {");
-		sourceCode = sourceCode.replace("\n  {", " {");
-		return sourceCode;
-	}
 	/** 
-	 * Program converts next line style java source code to end line style.
-	 * Source code filename is taken from parameters.
+	 * Program take file path and string from arguments.
+	 * Program then reads file using file path and removes all occurrences in the file.
 	 */
 	public static void main (String[] args) throws IOException {
+		// check if arguments are correct
+		if (args.length != 2) {
+			System.out.println("Wrong arguments length. Exit.");
+			System.exit(0);
+		}
 		// get filename from parameters and create file
-        File file = new File(args[0]);
+		File file = new File(args[1]);
+		// exit if file doesn't exist
+		if (!file.exists()) {
+			System.out.println("File doesnt exist! Exit.");
+			System.exit(0);
+		}
         Scanner fileInput = new Scanner(file);
         // read whole file and print formated
 		String content = fileInput.useDelimiter("\\Z").next();
-		System.out.println(formatSC(content));
+		content.replace(args[0], "");
 		
+		// create new writer and write content to the file
+		PrintWriter writer = new PrintWriter(args[1], "UTF-8");
+		writer.print(content);
+		
+		writer.close();
 		fileInput.close();
     }
 
