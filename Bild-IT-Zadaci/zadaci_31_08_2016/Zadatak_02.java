@@ -26,8 +26,8 @@ public class Zadatak_02 {
 	}
 	
 	/**
-	 * Program lists all java files with package declaration. Path to the
-	 * directory is taken from first argument.
+	 *  Program lists all java files with package declaration. Path to the
+	 *  directory is taken from first argument.
 	 */
 	public static void main(String[] args) {
 		// get filename from parameters and create file
