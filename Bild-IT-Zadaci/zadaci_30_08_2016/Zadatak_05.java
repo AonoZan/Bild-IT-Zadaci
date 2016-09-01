@@ -13,13 +13,12 @@ public class Zadatak_05 {
 	public static int[] getSumAverage(String content) {
 		// variables for sum and number count
 		int sum = 0, count = 0;
+		// replace all line breaks with spaces
 		content = content.replace("\n", " ").replace("\r", " ");
 		// loop over list of numbers as string
-		System.out.println(content.split(" ").length);
 		for (String number : content.split(" ")) {
 			try {
 				// try to parse number, count it and add to sum
-				System.out.println(count + " :" + number + ": " + sum);
 				int num = Integer.valueOf(number);
 				count++;
 				sum += num;
