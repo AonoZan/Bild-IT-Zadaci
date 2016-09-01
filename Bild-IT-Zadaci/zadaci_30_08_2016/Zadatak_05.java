@@ -13,16 +13,19 @@ public class Zadatak_05 {
 	public static int[] getSumAverage(String content) {
 		// variables for sum and number count
 		int sum = 0, count = 0;
-		// loop over list of numbers as string
-		for (String number : content.split(" ")) {
-			try {
-				// try to parse number, count it and add to sum
-				int num = Integer.valueOf(number);
-				count++;
-				sum += num;
-			} catch (Exception e) {
-				// if error skip that number
-				continue;
+		// loop over lines in text file
+		for (String line : content.split("\n")) {
+			// loop over list of numbers as string
+			for (String number : line.split(" ")) {
+				try {
+					// try to parse number, count it and add to sum
+					int num = Integer.valueOf(number);
+					count++;
+					sum += num;
+				} catch (Exception e) {
+					// if error skip that number
+					continue;
+				}
 			}
 		}
 		// return sum and average (sum/count)
