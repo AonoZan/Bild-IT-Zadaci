@@ -12,21 +12,20 @@ public class Zadatak_03 {
 	/** Method counts words from string. */
 	public static int countWords(String content) {
 		int count = 0;
-		// loop over all lines
-		for (String line : content.split("\n")) {
-			// loop over all words from spliced line
-			for (String word : line.split(" ")) {
-				// loop over characters in word
-				for (char ch : word.toCharArray()) {
-					// if alphabetical character is found
-					// then count as word and move on
-					if (Character.isAlphabetic(ch)) {
-						count++;
-						break;
-					}
+		// replace all line breaks with spaces
+		content = content.replace("\n", " ").replace("\r", " ");
+		// loop over all words from spliced file
+		for (String word : content.split(" ")) {
+			// loop over characters in word
+			for (char ch : word.toCharArray()) {
+				// if alphabetical character is found
+				// then count as word and move on
+				if (Character.isAlphabetic(ch)) {
+					count++;
+					break;
 				}
-			} 
-		}
+			}
+		} 
 		return count;
 	}
 	/** 
