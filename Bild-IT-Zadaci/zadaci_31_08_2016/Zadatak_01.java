@@ -13,9 +13,9 @@ public class Zadatak_01 {
 	public static String formatSC(String sourceCode) {
 		// convert from next-line style to end-line style format
 		sourceCode = sourceCode.replace("\n{", " {");
-//		sourceCode = sourceCode.replace("\n\t{", " {");
-//		sourceCode = sourceCode.replace("\n {", " {");
-//		sourceCode = sourceCode.replace("\n  {", " {");
+		sourceCode = sourceCode.replace("\n\t{", " {");
+		sourceCode = sourceCode.replace("\n {", " {");
+		sourceCode = sourceCode.replace("\n  {", " {");
 		return sourceCode;
 	}
 	/** 
