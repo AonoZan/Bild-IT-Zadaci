@@ -18,20 +18,23 @@ public class Zadatak_01 {
 		}
 		return sum;
 	}
+	/** Program reads database from file and calculates sum and average for salary. */
 	public static void main(String[] args) throws IOException {
 		// get file with salary database
 		URL url = new URL("http://cs.armstrong.edu/liang/data/Salary.txt");
 		Scanner fileInput = new Scanner(url.openStream());
-		
+		// create separate array list for each rank of faculty members
 		ArrayList<Double> salaryAssistant = new ArrayList<Double>();
 		ArrayList<Double> salaryAssociate = new ArrayList<Double>();
 		ArrayList<Double> salaryFull = new ArrayList<Double>();
-		
-        // create scanner from file
+		// loop until EOF
 		while(fileInput.hasNext()) {
+			// read line in list of strings
 			String[] line = fileInput.nextLine().split(" ");
+			// rank is third chunk and salary fourth
 			String rank = line[2];
 			String salary = line[3];
+			// based on which rank this line is add to appropriate list salary
 			switch (rank) {
 				case "assistant":
 					salaryAssistant.add(Double.parseDouble(salary));
@@ -46,13 +49,21 @@ public class Zadatak_01 {
 				default:
 					break;
 			}
-			System.out.println(salary + " " + rank);
 		}
-
+		// calculate sum for each rank
 		double sumAssistant = sum(salaryAssistant);
 		double sumAssociate = sum(salaryAssociate);
 		double sumFull = sum(salaryFull);
-		
+		// calculate average
+		double averageAssistant = sumAssistant / salaryAssistant.size();
+		double averageAssociate = sumAssociate / salaryAssociate.size();
+		double averageFull = sumFull / salaryFull.size();
+		// calculate total for whole database
+		double sumTotal = sumAssistant + sumAssociate + sumFull;
+		double averageTotal = sumTotal / (salaryAssistant.size()
+										+ salaryAssociate.size()
+										+ salaryFull.size());
+		// print status formated
 		System.out.printf
 				( "Status for assistants:\n"
 				+ "\ttotal: %.2f\n"
@@ -63,15 +74,19 @@ public class Zadatak_01 {
 				+ "Status for full:\n"
 				+ "\ttotal: %.2f\n"
 				+ "\taverage %.2f\n"
+				+ "\t\tTotal:\n"
+				+ "\t\t  total: %.2f\n"
+				+ "\t\t  average %.2f\n"
 				, sumAssistant
-				, sumAssistant / salaryAssistant.size()
+				, averageAssistant
 				, sumAssociate
-				, sumAssociate / salaryAssociate.size()
+				, averageAssociate
 				, sumFull
-				, sumFull / salaryFull.size()
+				, averageFull
+				, sumTotal
+				, averageTotal
 				);
 		fileInput.close();
 	}
 
 }
-
