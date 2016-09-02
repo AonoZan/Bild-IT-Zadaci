@@ -36,6 +36,7 @@ public class Zadatak_04 {
 		}
 		System.out.println();
 	}
+	/** Program generates random list and shuffles it. */
 	public static void main(String[] args) {
 		ArrayList<Number> list = new ArrayList<>();
 		// generate list and print it
