@@ -7,7 +7,9 @@ import java.util.ArrayList;
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_04 {
-
+	/** Program creates list of few objects and prints them
+	 * and calls method if implemented in color-able interface.
+	 */
 	public static void main(String[] args) {
 		// create list for objects
 		ArrayList<GeometricObject> list = new ArrayList<>();
@@ -20,7 +22,7 @@ public class Zadatak_04 {
 		// loop over list
 		for (GeometricObject gObject : list) {
 			// print to string and howToColor() if implemented
-			System.out.println("Geometric object: " + gObject.toString());
+			System.out.println("Geometric object: " + gObject);
 			if (gObject instanceof Colorable) {
 				System.out.print("\t");
 				((Colorable) gObject).howToColor();
