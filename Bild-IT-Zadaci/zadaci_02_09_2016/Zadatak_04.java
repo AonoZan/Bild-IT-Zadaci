@@ -37,11 +37,36 @@ interface Colorable {
 	void howToColor();
 }
 // geometricObject class
-class GeometricObject {
+class GeometricObject implements Comparable<GeometricObject> {
+	private int size;
+	
+	public GeometricObject() {
+		this(1);
+	}
+	public GeometricObject(int size) {
+		this.size = size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public int getSize() {
+		return this.size;
+	}
+	
 	@Override
 	public String toString() {
 		return "Simple geometric object.";
 	}
+
+	@Override
+    public int compareTo(GeometricObject object) {
+        if (this.size > object.getSize())
+            return 1;
+        else if (this.size < object.getSize())
+            return -1;
+        else
+            return 0;
+    }
 }
 // simple circle
 class Circle extends GeometricObject {
