@@ -52,7 +52,9 @@ class GeometricObject implements Comparable<GeometricObject> {
 	public int getSize() {
 		return this.size;
 	}
-	
+	public double getArea(){
+		return 0;
+	}
 	@Override
 	public String toString() {
 		return "Simple geometric object.";
@@ -73,11 +75,24 @@ class GeometricObject implements Comparable<GeometricObject> {
 }
 // simple circle
 class Circle extends GeometricObject {
-	public Circle() {
-		super(0);
+	private double radius;
+	Circle(){
+		this(1);
 	}
-	public Circle(int size) {
-		super(size);
+	Circle(double newRadius){
+		radius = newRadius;
+	}
+	@Override
+	public double getArea(){
+		return radius * radius * Math.PI;
+	}
+	public double getRadius(){
+		return radius;
+	}
+	public void setRadius(double newRadius){
+		if(newRadius >= 0){
+			radius = newRadius;
+		}
 	}
 	@Override
 	public String toString() {
