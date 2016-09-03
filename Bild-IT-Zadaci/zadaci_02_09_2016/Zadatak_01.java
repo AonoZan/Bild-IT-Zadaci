@@ -2,8 +2,6 @@
 package zadaci_02_09_2016;
 
 import java.time.LocalDateTime;
-import java.time.Year;
-import java.util.Calendar;
 
 import projekat_sedmica_01.Month;
 
