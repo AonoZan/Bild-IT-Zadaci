@@ -58,7 +58,7 @@ class Square extends GeometricObject implements Colorable {
 	}
 	@Override
 	public void howToColor() {
-		System.out.println("All four sides.");
+		System.out.println("Pixel * Width * Height .");
 	}
 }
 // rectangle...
