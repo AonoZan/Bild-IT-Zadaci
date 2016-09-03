@@ -15,13 +15,13 @@ public class Month {
 	private int startingDay;
 	private int maxDayInMonth;
 	
-	Month() {
+	public Month() {
 		this(2016);
 	}
-	Month(int year) {
+	public Month(int year) {
 		this(year, 1);
 	}
-	Month(int year, int month) {
+	public Month(int year, int month) {
 		this.yearMonth[0] = year;
 		this.yearMonth[1] = month;
 		updateEverything();
