@@ -1,3 +1,6 @@
+
+
+
 /*
  * Globals
  */
@@ -6,7 +9,7 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #4b803a;
 }
 
 /* Custom default button */
@@ -15,8 +18,8 @@ a:hover {
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: #4b803a;
+  border: 1px solid #4b803a;
 }
 
 
@@ -27,10 +30,15 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
+
 }
 body {
-  color: #fff;
+  background: url(Images/background.png) repeat-y center center fixed;
+/*  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+  color: #949494;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
@@ -91,8 +99,8 @@ body {
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: #4b803a;
+  border-bottom-color: #4b803a;
 }
 
 @media (min-width: 768px) {
@@ -117,6 +125,14 @@ body {
   font-weight: bold;
 }
 
+/*
+ * Header
+ */
+
+.masthead {
+  background-color: rgba(255, 255, 255, 0.15);
+
+}
 
 /*
  * Footer
