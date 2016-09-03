@@ -57,7 +57,10 @@ class GeometricObject implements Comparable<GeometricObject> {
 	public String toString() {
 		return "Simple geometric object.";
 	}
-
+	// https://github.com/LuizGsa21/intro-to-java-10th-edition/blob/master/src/ToolKit/GeometricObject.java
+	public static GeometricObject max(GeometricObject o1, GeometricObject o2) {
+        return (o1.compareTo(o2) >= 0) ? o1 : o2;
+    }
 	@Override
     public int compareTo(GeometricObject object) {
         if (this.size > object.getSize())
@@ -70,6 +73,12 @@ class GeometricObject implements Comparable<GeometricObject> {
 }
 // simple circle
 class Circle extends GeometricObject {
+	public Circle() {
+		super(0);
+	}
+	public Circle(int size) {
+		super(size);
+	}
 	@Override
 	public String toString() {
 		return "Circle shape..";
@@ -77,6 +86,12 @@ class Circle extends GeometricObject {
 }
 // square class that implements color-able interface
 class Square extends GeometricObject implements Colorable {
+	public Square() {
+		super();
+	}
+	public Square(int size) {
+		super(size);
+	}
 	@Override
 	public String toString() {
 		return "This one is square.";
@@ -88,6 +103,12 @@ class Square extends GeometricObject implements Colorable {
 }
 // rectangle...
 class Rectangle extends GeometricObject {
+	public Rectangle() {
+		super();
+	}
+	public Rectangle(int size) {
+		super(size);
+	}
 	@Override
 	public String toString() {
 		return "Rectangle of some sort.";
@@ -95,6 +116,12 @@ class Rectangle extends GeometricObject {
 }
 // and triangle...
 class Triangle extends GeometricObject {
+	public Triangle() {
+		super();
+	}
+	public Triangle(int size) {
+		super(size);
+	}
 	@Override
 	public String toString() {
 		return "Triangle.";
@@ -102,6 +129,12 @@ class Triangle extends GeometricObject {
 }
 // cube also implements color-able
 class Cube extends GeometricObject implements Colorable {
+	public Cube() {
+		super();
+	}
+	public Cube(int size) {
+		super(size);
+	}
 	@Override
 	public String toString() {
 		return "Cubic object.";
