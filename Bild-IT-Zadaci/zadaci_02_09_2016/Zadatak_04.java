@@ -7,7 +7,8 @@ import java.util.ArrayList;
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_04 {
-	/** Program creates list of few objects and prints them
+	/**
+	 * Program creates list of few objects and prints them
 	 * and calls method if implemented in color-able interface.
 	 */
 	public static void main(String[] args) {
