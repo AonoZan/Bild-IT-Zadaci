@@ -25,7 +25,7 @@ public class Zadatak_04 {
 			// print to string and howToColor() if implemented
 			System.out.println("Geometric object: " + gObject);
 			if (gObject instanceof Colorable) {
-				System.out.print("\t");
+				System.out.print("\tHow to color? ");
 				((Colorable) gObject).howToColor();
 			}
 		}
