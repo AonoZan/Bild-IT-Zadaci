@@ -7,10 +7,10 @@ public class Zadatak_03 {
 
 	public static void main(String[] args) {
 		// create two objects
-		Circle c1 = new Circle(10);
-		Circle c2 = new Circle(10.1);
+		ComparableCircle c1 = new ComparableCircle(10);
+		ComparableCircle c2 = new ComparableCircle(10.1);
 		// compare to get max and print statistic
-		Circle cMax = (Circle)GeometricObject.max(c1, c2);
+		ComparableCircle cMax = (ComparableCircle)GeometricObject.max(c1, c2);
 		System.out.printf("Circle with area %.2f is max when compared two circles:"
 				+ "\nCircle1: area = %.2f"
 				+ "\nCircle2: area = %.2f"
@@ -21,6 +21,12 @@ public class Zadatak_03 {
 
 }
 class ComparableCircle extends Circle implements Comparable<GeometricObject>{
+	ComparableCircle(){
+		super(1);
+	}
+	ComparableCircle(double newRadius){
+		super(newRadius);
+	}
 	// https://github.com/LuizGsa21/intro-to-java-10th-edition/blob/master/src/ToolKit/GeometricObject.java
 	public static GeometricObject max(GeometricObject o1, GeometricObject o2) {
         return (o1.compareTo(o2) >= 0) ? o1 : o2;
