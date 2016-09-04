@@ -36,8 +36,14 @@ class Octagon extends GeometricObject implements Cloneable, Comparable<Octagon> 
 		return side;
 	}
 	/** Retrieves area of octagon */
+	@Override
 	public double getArea() {
 		return (2 + 4/Math.sqrt(2))* side * side;
+	}
+	/** Retrieve perimeter */
+	@Override
+	public double getPerimeter() {
+		return this.side * 8;
 	}
 	// octagons are compared based on their area
 	@Override
@@ -72,9 +78,10 @@ class Octagon extends GeometricObject implements Cloneable, Comparable<Octagon> 
 				"\n\tarea: " +
 				getArea();
 	}
+	
 }
 /** Simple geometric object class */
-class GeometricObject {
+abstract class GeometricObject {
 	// geometric object have color and date created
 	private String color;
 	private java.util.Date dateCreated;
@@ -96,6 +103,11 @@ class GeometricObject {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	/** Abstract method getArea */
+    public abstract double getArea();
+
+    /** Abstract method getPerimeter */
+    public abstract double getPerimeter();
 	@Override
 	public String toString() {
 		return "\tcolor: " +
