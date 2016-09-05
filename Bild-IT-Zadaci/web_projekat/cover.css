@@ -22,6 +22,35 @@ a:hover {
   border: 1px solid #4b803a;
 }
 
+/* http://stackoverflow.com/questions/19227496/scrollable-menu-with-bootstrap-3-menu-expanding-its-container-when-it-should-n */
+.scrollable-menu {
+    height: auto;
+    max-height: 180px;
+    overflow-x: hidden;
+}
+.scrollable-menu::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 4px;        
+}    
+.scrollable-menu::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: lightgray;
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.75);        
+}
+/* Custom */
+.plejlista {
+	background-color: rgba(125, 255, 109, 0.12);
+}
+.plejlista-item {
+	color: white;
+}
+.plejlista-item:hover,
+.plejlista-item:focus {
+  color: #333;
+  text-shadow: none;
+  background-color: #4b803a;
+  border: 1px solid #4b803a;
+}
 
 /*
  * Base structure
@@ -33,7 +62,7 @@ body {
 
 }
 body {
-  background: url(Images/background.png) repeat-y center center fixed;
+  background: url(Images/background.png) repeat center center fixed;
 /*  -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -70,6 +99,10 @@ body {
 /*
  * Header
  */
+ .masthead {
+   background-color: rgba(255, 255, 255, 0.15);
+ }
+
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -125,14 +158,6 @@ body {
   font-weight: bold;
 }
 
-/*
- * Header
- */
-
-.masthead {
-  background-color: rgba(255, 255, 255, 0.15);
-
-}
 
 /*
  * Footer
@@ -149,6 +174,9 @@ body {
  */
 
 @media (min-width: 768px) {
+	.lead {
+		font-size: 18px;
+	}
   /* Pull out the header and footer */
   .masthead {
     position: fixed;

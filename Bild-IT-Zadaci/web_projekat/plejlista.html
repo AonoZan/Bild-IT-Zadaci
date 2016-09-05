@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
-
+	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -40,20 +40,26 @@
               <h3 class="masthead-brand">Play</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li><a href="index.html">Home</a></li>
-                  <li class="active"><a href="#">Features</a></li>
-                  <li><a href="autor.html">Contact</a></li>
+                  <li><a href="index.html">Početna</a></li>
+                  <li class="active"><a href="#">Plejlista</a></li>
+                  <li><a href="autor.html">Autor</a></li>
                 </ul>
               </nav>
             </div>
           </div>
 
-          <div class="inner cover">
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
-            </p>
+          <div class="container-fluid inner cover">
+			<div class="row-fluid">
+				<div id="plejlista" class="col-md-3 scrollable-menu plejlista">
+					<div class="plejlista-item" data-myValue="audio/Damaged.ogg"onclick="plejlista(this);">Damaged</div>
+					<div class="plejlista-item" data-myValue="audio/Tides.ogg" onclick="plejlista(this);">Tides</div>
+					<div class="plejlista-item" data-myValue="audio/Firn.ogg"onclick="plejlista(this);">Firn</div>
+					
+				</div>
+				<div class="col-md-9">
+					 
+				</div>
+			</div>
           </div>
 
           <div class="mastfoot">
@@ -67,6 +73,56 @@
       </div>
 
     </div>
+	<script>
+	// kreiraj novu varijablu koja ce sadrzati audio
+	var audio = new Audio();
+	// postavi event da kada pjesma zavrsi da se pisti druga
+	audio.addEventListener("ended", function(){
+		audio.currentTime = 0;
+		sledecaPjesma();
+	});
+	// funkcija za plejlistu odradi potrebnu akciju
+	// kada korisnik klikne na neku pjesmu u plejlisti
+	function plejlista(element) {
+		// ako nije ista pjesma ucitaj novu sa elementa i pusti ju
+		if (!istaPjesma(element)) {
+			audio.src = element.getAttribute('data-myValue');
+			audio.load();
+			audio.play();
+		// ako je to ista pjesma
+		} else {
+			// i ako nije pauzirana pauziraj ju
+			if (!audio.paused) {
+				audio.pause();
+			// ili ju pusti ponovo
+			} else {
+				audio.play();
+			}
+		}
+	}
+	// funkcija vraca samo ime fajla
+	function imeFajla(path) {
+		return path.split('/').pop();
+	}
+	// funkcija provjerava da li je pjesma koja je pustena ista iz argumenta
+	function istaPjesma(song) {
+		var oldS = imeFajla(audio.src);
+		var newS = imeFajla(song.getAttribute('data-myValue'));
+		return oldS == newS;
+	}
+	
+	// funkcija bira nasumični element i pusta pjesmu iz tog elementa
+	function sledecaPjesma() {
+		var lis = document.getElementById("plejlista").getElementsByTagName("div");
+		var item;
+		do {
+			item = lis[Math.floor(Math.random() * lis.length)];
+		} while (istaPjesma(item));
+		
+		plejlista(item);
+	}
+	//sledecaPjesma();
+	</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -75,6 +131,7 @@
     <script src="js/vendor/jquery.min.js"></script>
 
     <script src="js/bootstrap.min.js"></script>
+	
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
