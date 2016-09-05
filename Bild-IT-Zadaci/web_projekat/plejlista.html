@@ -30,60 +30,73 @@
   <body>
 
     <div class="site-wrapper">
-
       <div class="site-wrapper-inner">
-
         <div class="cover-container">
-
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Play</h3>
-              <nav>
+              <!-- glavni naslov -->
+			  <h3 class="masthead-brand">Play</h3>
+              <!-- meni -->
+			  <nav>
                 <ul class="nav masthead-nav">
                   <li><a href="index.html">Početna</a></li>
                   <li class="active"><a href="#">Plejlista</a></li>
                   <li><a href="autor.html">Autor</a></li>
                 </ul>
               </nav>
+			  
             </div>
           </div>
-
+		  <!-- sadrzaj je u container-fluid -->
           <div class="container-fluid inner cover">
+			<!-- dodaj red sa slikom koja stoji iznad plejliste -->
 			<div class="row-fluid">
-				<div id="plejlista" class="col-md-3 scrollable-menu plejlista">
-					<div class="plejlista-item" data-myValue="audio/Damaged.ogg"onclick="plejlista(this);">Damaged</div>
-					<div class="plejlista-item" data-myValue="audio/Tides.ogg" onclick="plejlista(this);">Tides</div>
-					<div class="plejlista-item" data-myValue="audio/Firn.ogg"onclick="plejlista(this);">Firn</div>
-					
-				</div>
-				<div class="col-md-9">
-					 
+				<img src="images/spacerUp.svg" class="img-fluid" alt="Responsive image">
+			</div>
+			<!-- plejlista -->
+			<div class="row-fluid">
+				<div id="plejlista" class="col-md-12 scrollable-menu plejlista">
+					<div class="plejlista-item" data-myValue="audio/bensound-betterdays.mp3">Better days</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-goinghigher.mp3">Going higher</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-anewbeginning.mp3">A new beginning</div>
+					<!-- Ispod su samo kopije ove tri pjesme iznad sa drugim imenima... -->
+					<div class="plejlista-item" data-myValue="audio/bensound-betterdays.mp3">Inspiring bird</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-goinghigher.mp3">Morning flight</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-anewbeginning.mp3">Ending</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-betterdays.mp3">Season</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-goinghigher.mp3">Weather</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-anewbeginning.mp3">Rain on sun</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-betterdays.mp3">Afraid to go</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-goinghigher.mp3">Pirates</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-anewbeginning.mp3">Kokos</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-betterdays.mp3">Saying goodbye</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-goinghigher.mp3">Asking again</div>
+					<div class="plejlista-item" data-myValue="audio/bensound-anewbeginning.mp3">Farewell</div>
 				</div>
 			</div>
+			<!-- red sa dlikom koja stoji ispod plejliste -->
+			<div class="row-fluid">
+				<img src="images/spacerDown.svg" class="img-fluid" alt="Responsive image">
+			</div>
           </div>
-
+		  <!-- footer -->
           <div class="mastfoot">
             <div class="inner">
-              <p>Plejlista je napravljena uz pomoć <a href="http://getbootstrap.com">Bootstrap</a> projekta, autor <a href="https://github.com/AonoZan/">@AonoZan</a>.</p>
+				<p class="col-md-12">Ako ti se svidila neka od pjesama posjeti <a href="http://www.bensound.com">Bensound</a> za još.</p><br>
+				<p>Plejlista je napravljena uz pomoć <a href="http://getbootstrap.com">Bootstrap</a> projekta, autor <a href="https://github.com/AonoZan/">@AonoZan</a>.</p>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
 	<script>
-	// kreiraj novu varijablu koja ce sadrzati audio
+	// kreiraj novu varijablu koja ce sadrzati audio i varijable plejliste u html-u
 	var audio = new Audio();
-	// postavi event da kada pjesma zavrsi da se pisti druga
-	audio.addEventListener("ended", function(){
-		audio.currentTime = 0;
-		sledecaPjesma();
-	});
+	var plejlistaT = document.getElementById('plejlista');
+	
 	// funkcija za plejlistu odradi potrebnu akciju
 	// kada korisnik klikne na neku pjesmu u plejlisti
-	function plejlista(element) {
+	function plej(element) {
 		// ako nije ista pjesma ucitaj novu sa elementa i pusti ju
 		if (!istaPjesma(element)) {
 			audio.src = element.getAttribute('data-myValue');
@@ -102,26 +115,42 @@
 	}
 	// funkcija vraca samo ime fajla
 	function imeFajla(path) {
+		// rastavi putanju fajla sa '/' i vrati zadnji elemenat
 		return path.split('/').pop();
 	}
 	// funkcija provjerava da li je pjesma koja je pustena ista iz argumenta
 	function istaPjesma(song) {
+		// pronadji imena pustene pjesme i pjesme iz argumenta
 		var oldS = imeFajla(audio.src);
 		var newS = imeFajla(song.getAttribute('data-myValue'));
+		// vrati rezultat da li su jednake
 		return oldS == newS;
 	}
 	
 	// funkcija bira nasumični element i pusta pjesmu iz tog elementa
 	function sledecaPjesma() {
+		// pronadji plejlistu
 		var lis = document.getElementById("plejlista").getElementsByTagName("div");
-		var item;
+		// napravi novi ali da ne sadrzi istu pjesmu kao trenutni 
+		var element;
 		do {
-			item = lis[Math.floor(Math.random() * lis.length)];
-		} while (istaPjesma(item));
-		
-		plejlista(item);
+			element = lis[Math.floor(Math.random() * lis.length)];
+		} while (istaPjesma(element));
+		// pusti novu pjesmu
+		plej(element);
 	}
-	//sledecaPjesma();
+	
+	// postavi event da kada pjesma zavrsi da se pisti druga
+	audio.addEventListener("ended", function(){
+		audio.currentTime = 0;
+		sledecaPjesma();
+	});
+	// postavi event kada se klikne na plejlistu da pusti ili pauzira pjesmu
+	plejlistaT.addEventListener('click', function(e) {
+		plej(e.target)
+	});
+	
+	sledecaPjesma();
 	</script>
 
     <!-- Bootstrap core JavaScript

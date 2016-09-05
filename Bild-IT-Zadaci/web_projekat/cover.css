@@ -39,14 +39,14 @@ a:hover {
 }
 /* Custom */
 .plejlista {
-	background-color: rgba(125, 255, 109, 0.12);
+	background-color: rgba(0, 0, 0, 0.12);
 }
 .plejlista-item {
-	color: white;
+	color: #4b803a;
 }
 .plejlista-item:hover,
 .plejlista-item:focus {
-  color: #333;
+  color: white;
   text-shadow: none;
   background-color: #4b803a;
   border: 1px solid #4b803a;
