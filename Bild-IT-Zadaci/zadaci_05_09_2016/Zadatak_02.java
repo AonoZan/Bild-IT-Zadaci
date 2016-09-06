@@ -1,6 +1,7 @@
 
 package zadaci_05_09_2016;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
@@ -25,11 +26,26 @@ public class Zadatak_02 {
 				, bigRat.getDenominator().toString()
 				);
 		
+		Rational ratMul = rat.multiply(new Rational(45, 63));
+		BigRational bigRatMul = bigRat.multiply(new BigRational(new BigInteger("45"), new BigInteger("63")));
+		
+		System.out.printf("Rational multiply with (45, 63):\n"
+				+ "\tnumerator: %d\n"
+				+ "\tdenominator: %d\n"
+				, ratMul.getNumerator()
+				, ratMul.getDenominator()
+				);
+		System.out.printf("BigRational multiply with (45, 63):\n"
+				+ "\tnumerator: %d\n"
+				+ "\tdenominator: %d\n"
+				, bigRatMul.getNumerator()
+				, bigRatMul.getDenominator()
+				);
 	}
 }
-
-class BigRational {//extends Number implements Comparable<Rational> {
-//	private static final long serialVersionUID = 1L;
+/** BigRational is class same as Rational only that here BigInteger is used instead. */
+class BigRational extends Number implements Comparable<BigRational> {
+	private static final long serialVersionUID = 1L;
 	// Data fields for numerator and denominator
 	private BigInteger numerator;
 	private BigInteger denominator;
@@ -69,78 +85,93 @@ class BigRational {//extends Number implements Comparable<Rational> {
 	public BigInteger getDenominator() {
 		return new BigInteger(denominator.toString());
 	}
-//
-//	/** Add a rational number to this rational */
-//	public Rational add(Rational secondRational) {
-//		long n = numerator * secondRational.getDenominator() + denominator * secondRational.getNumerator();
-//		long d = denominator * secondRational.getDenominator();
-//		return new Rational(n, d);
-//	}
-//
-//	/** Subtract a rational number from this rational */
-//	public Rational subtract(Rational secondRational) {
-//		long n = numerator * secondRational.getDenominator() - denominator * secondRational.getNumerator();
-//		long d = denominator * secondRational.getDenominator();
-//		return new Rational(n, d);
-//	}
-//
-//	/** Multiply a rational number by this rational */
-//	public Rational multiply(Rational secondRational) {
-//		long n = numerator * secondRational.getNumerator();
-//		long d = denominator * secondRational.getDenominator();
-//		return new Rational(n, d);
-//	}
-//
-//	/** Divide a rational number by this rational */
-//	public Rational divide(Rational secondRational) {
-//		long n = numerator * secondRational.getDenominator();
-//		long d = denominator * secondRational.numerator;
-//		return new Rational(n, d);
-//	}
-//
-//	@Override
-//	public String toString() {
-//		if (denominator == 1)
-//			return numerator + "";
-//		else
-//			return numerator + "/" + denominator;
-//	}
-//
-//	@Override // Override the equals method in the Object class
-//	public boolean equals(Object other) {
-//		if ((this.subtract((Rational) (other))).getNumerator() == 0)
-//			return true;
-//		else
-//			return false;
-//	}
-//
-//	@Override // Implement the abstract intValue method in Number
-//	public int intValue() {
-//		return (int) doubleValue();
-//	}
-//
-//	@Override // Implement the abstract floatValue method in Number
-//	public float floatValue() {
-//		return (float) doubleValue();
-//	}
-//
-//	@Override // Implement the doubleValue method in Number
-//	public double doubleValue() {
-//		return numerator * 1.0 / denominator;
-//	}
-//
-//	@Override // Implement the abstract longValue method in Number
-//	public long longValue() {
-//		return (long) doubleValue();
-//	}
-//
-//	@Override // Implement the compareTo method in Comparable
-//	public int compareTo(Rational o) {
-//		if (this.subtract(o).getNumerator() > 0)
-//			return 1;
-//		else if (this.subtract(o).getNumerator() < 0)
-//			return -1;
-//		else
-//			return 0;
-//	}
+
+	/** Add a rational number to this rational */
+	public BigRational add(BigRational secondRational) {
+		BigInteger n = numerator
+				.multiply(secondRational.getDenominator())
+				.add(denominator)
+				.multiply(secondRational.getNumerator());
+		BigInteger d = denominator
+				.multiply(secondRational.getDenominator());
+		return new BigRational(n, d);
+	}
+
+	/** Subtract a rational number from this rational */
+	public BigRational subtract(BigRational secondRational) {
+		BigInteger n = numerator
+				.multiply(secondRational.getDenominator())
+				.subtract(denominator)
+				.multiply(secondRational.getNumerator());
+		BigInteger d = denominator
+				.multiply(secondRational.getDenominator());
+		return new BigRational(n, d);
+	}
+
+	/** Multiply a rational number by this rational */
+	public BigRational multiply(BigRational secondRational) {
+		BigInteger n = numerator
+				.multiply(secondRational.getNumerator());
+		BigInteger d = denominator
+				.multiply(secondRational.getDenominator());
+		return new BigRational(n, d);
+	}
+
+	/** Divide a rational number by this rational */
+	public BigRational divide(BigRational secondRational) {
+		BigInteger n = numerator
+				.multiply(secondRational.getDenominator());
+		BigInteger d = denominator
+				.multiply(secondRational.numerator);
+		return new BigRational(n, d);
+	}
+
+	@Override
+	public String toString() {
+		if (denominator.compareTo(BigInteger.ONE) == 1)
+			return numerator.toString() + "";
+		else
+			return numerator.toString() + "/" + denominator.toString();
+	}
+
+	@Override // Override the equals method in the Object class
+	public boolean equals(Object other) {
+		if ((this.subtract((BigRational) (other))).getNumerator().compareTo(BigInteger.ZERO) == 0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override // Implement the abstract intValue method in Number
+	public int intValue() {
+		return (int) doubleValue();
+	}
+
+	@Override // Implement the abstract floatValue method in Number
+	public float floatValue() {
+		return (float) doubleValue();
+	}
+
+	@Override // Implement the doubleValue method in Number
+	public double doubleValue() {
+		BigDecimal n = new BigDecimal(numerator);
+		BigDecimal d = new BigDecimal(denominator);
+		
+		return n.divide(d, 0).doubleValue();
+	}
+
+	@Override // Implement the abstract longValue method in Number
+	public long longValue() {
+		return (long) doubleValue();
+	}
+
+	@Override // Implement the compareTo method in Comparable
+	public int compareTo(BigRational o) {
+		if (this.subtract(o).getNumerator().compareTo(BigInteger.ZERO) > 0)
+			return 1;
+		else if (this.subtract(o).getNumerator().compareTo(BigInteger.ZERO) < 0)
+			return -1;
+		else
+			return 0;
+	}
 }
