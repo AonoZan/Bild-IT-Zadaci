@@ -21,12 +21,12 @@ public class Zadatak_03 {
 			System.out.println("Usage: java Calculator operand1 operator operand2");
 			System.exit(0);
 		}
-		
+		// parse rational from arguments
 		Rational rat1 = parseRational(args[0]);
 		Rational rat2 = parseRational(args[2]);
-		
+		// create variable for result
 		Rational result = new Rational();
-		
+		// do calculation based on operator from arguments
 		switch (args[1]) {
 		case "+":
 			result = rat1.add(rat2);
@@ -44,6 +44,7 @@ public class Zadatak_03 {
 			System.out.printf("Operation %s is not supported.\n", args[1]);
 			break;
 		}
+		// print result
 		System.out.printf("%s %s %s = %d/%d"
 				, args[0], args[1], args[2]
 				, result.getNumerator()
