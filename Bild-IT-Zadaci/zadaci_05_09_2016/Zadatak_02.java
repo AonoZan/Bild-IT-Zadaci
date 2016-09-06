@@ -62,7 +62,31 @@ class BigRational extends Number implements Comparable<BigRational> {
 		this.numerator = new BigInteger(((denominator.compareTo(BigInteger.ZERO) > 0) ? 1 : -1) + "").multiply(numerator).divide(gcd);
 		this.denominator = denominator.abs().divide(gcd);
 	}
+	
+	/** Construct rational from decimal. */
+	// https://github.com/LuizGsa21/intro-to-java-10th-edition/blob/master/src/ToolKit/BigRational.java
+	public BigRational(String decimal) {
+		// get index of separator
+        int index = (decimal.contains(".")) ? decimal.indexOf('.') : decimal.indexOf('/');
+        BigInteger d;
+        BigInteger n;
+        // if string is in decimal form
+        if (decimal.contains(".")) {
+            int power = decimal.substring(index + 1, decimal.length()).length();
+            d = new BigInteger((int)Math.pow(10,power) + "");
+            n = new BigInteger(new StringBuilder(decimal).deleteCharAt(index).toString());
+        } else {
+            // if string contains '/'
+            n = new BigInteger(decimal.substring(0, index));
+            d = new BigInteger(decimal.substring(index + 1, decimal.length()));
+        }
 
+        BigInteger gcd = gcd(n, d);
+        this.numerator = ((d.compareTo(BigInteger.ZERO) > 0) ? BigInteger.ONE : new BigInteger("-1")).multiply(n).divide(gcd);
+        this.denominator = d.abs().divide(gcd);
+
+    }
+	
 	/** Find GCD of two numbers */
 	private static BigInteger gcd(BigInteger n, BigInteger d) {
 		BigInteger n1 = n.abs();
@@ -76,7 +100,7 @@ class BigRational extends Number implements Comparable<BigRational> {
 
 		return gcd;
 	}
-
+	
 	/** Return numerator */
 	public BigInteger getNumerator() {
 		return new BigInteger(numerator.toString());
