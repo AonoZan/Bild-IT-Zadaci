@@ -8,27 +8,28 @@ import java.math.BigInteger;
  *  @author AonoZan Dejan Petrovic 2016 ©
  */
 public class Zadatak_02 {
+	/** Program tests BigRational class. */
 	public static void main(String[] args) {
+		// create normal rational and big rational with same values
 		Rational rat = new Rational(15, 78);
 		BigRational bigRat = new BigRational(new BigInteger("15"), new BigInteger("78"));
-		
+		// print numerator and denominator of both objects
 		System.out.printf("Rational:\n"
 				+ "\tnumerator: %d\n"
 				+ "\tdenominator: %d\n"
 				, rat.getNumerator()
 				, rat.getDenominator()
 				);
-
 		System.out.printf("BigRational:\n"
 				+ "\tnumerator: %s\n"
 				+ "\tdenominator: %s\n"
 				, bigRat.getNumerator().toString()
 				, bigRat.getDenominator().toString()
 				);
-		
+		// multiply both objects with same values
 		Rational ratMul = rat.multiply(new Rational(45, 63));
 		BigRational bigRatMul = bigRat.multiply(new BigRational(new BigInteger("45"), new BigInteger("63")));
-		
+		// print results
 		System.out.printf("Rational multiply with (45, 63):\n"
 				+ "\tnumerator: %d\n"
 				+ "\tdenominator: %d\n"
