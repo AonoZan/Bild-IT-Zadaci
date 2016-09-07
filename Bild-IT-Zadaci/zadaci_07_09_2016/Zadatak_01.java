@@ -10,14 +10,17 @@ import java.util.Scanner;
 public class Zadatak_01 {
 	// constant for division
 	public final static int TEN = 10;
-	
+	/** Method prints int value in reverse using recursion. (123 = 321) */
 	public static void intReverse(int i) {
+		// if number is 0 return
+		// else print last and using recursion do else for all except last one
 		if (i == 0) return;
 		else {
 			System.out.print(i % TEN);
 			intReverse(i / TEN);
 		}
 	}
+	/** Program asks user for one number and then prints it in reverse. */
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		// create number and prompt user for value
