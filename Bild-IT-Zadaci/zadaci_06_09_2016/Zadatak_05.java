@@ -17,7 +17,10 @@ public class Zadatak_05 {
 
 	/** Program prints series of number for index 10 using formula i/i+1. */
 	public static void main(String[] args) {
-		System.out.println(recurSum(10));
+		System.out.println("For formula i / i + 1:");
+		for (int i = 1; i < 10; i++) {
+			System.out.printf("If i is %d then result is: %.4f\n", i, recurSum(i));
+		}
 	}
 }
 
