@@ -25,7 +25,7 @@ public class Zadatak_05 {
 		Scanner input = new Scanner(System.in);
 		// prompt user for 8 values
 		int[] list = new int[8];
-		System.out.print("Enter 8 values:");
+		System.out.print("Enter 8 values: ");
 		for (int i = 0; i < list.length; i++) {
 			try {
 				// take value
