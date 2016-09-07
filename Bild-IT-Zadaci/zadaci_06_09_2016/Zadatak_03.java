@@ -17,7 +17,10 @@ public class Zadatak_03 {
 	/** Program calculates series for index 10. */
 	public static void main(String[] args) {
 		// print series of number 10
-		System.out.println("Series of number for index 10 is " + sumSeries(10));
+		System.out.println("For formula ni = 1 + 1/i2 + n/i3...");
+		for (int i = 1; i <= 10; i++) {
+			System.out.printf("i%d = %.4f\n", i, sumSeries(i));
+		}
 	}
 }
 
