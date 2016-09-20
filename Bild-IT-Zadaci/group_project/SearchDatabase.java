@@ -33,7 +33,7 @@ public class SearchDatabase {
 			+ new String(where.equals("null") ? "" : "WHERE "+where)
 			+ ";"
 		};
-		// execute comma nd and return output
+		// execute command and return output
 		return runMySQLCommand(commands);
 	}
 	//http://stackoverflow.com/questions/5711084/java-runtime-getruntime-getting-output-from-executing-a-command-line-program
