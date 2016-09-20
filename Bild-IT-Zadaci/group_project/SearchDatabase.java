@@ -60,7 +60,7 @@ public class SearchDatabase {
 	public static void main(String[] args) throws IOException {
 		Scanner input = new Scanner(System.in);
 		// get name and password
-		System.out.println("Enter your login name and password(comma separated): ");
+		System.out.println("Enter your login name and password.");
 		
 		System.out.println("Enter name: ");
 		String name = input.nextLine();
